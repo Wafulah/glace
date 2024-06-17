@@ -19,8 +19,10 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const user = JSON.parse(decodeURIComponent(user_info));
 
     await signIn("credentials", {
-      user,
-    });
+        email: user.email,
+        name: user.name,
+        id: user.sub,
+      });
 
     redirect("/settings");
   } catch (error) {
