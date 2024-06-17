@@ -24,6 +24,7 @@ export async function GET(req: NextRequest) {
         email: user.email,
         name: user.name,
         id: user.sub,
+        picture: user.picture,
       });
     } catch (error) {
       console.error("Error sign in user:", error);
