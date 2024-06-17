@@ -1,4 +1,4 @@
-import { AuthError } from "next-auth";
+import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { NextRequest, NextResponse } from "next/server";
 import { signIn } from "next-auth/react"; // Adjust the import based on your actual auth setup
 
@@ -17,21 +17,16 @@ export async function GET(req: NextRequest) {
   try {
     const user = JSON.parse(decodeURIComponent(user_info));
 
-    console.log(user);
+    console.log(user, "user");
 
-    try {
-      await signIn("credentials", {
-        redirect: false,
-        email: user.email,
-        name: user.name,
-        id: user.sub,
-      });
-    } catch (error) {
-      console.error(error);
-      return NextResponse.json({ error: "Failed to sign in" }, { status: 500 });
-    }
+    await signIn("credentials", {
+      email: user.email,
+      name: user.name,
+      id: user.sub,
+      redirectTo: DEFAULT_LOGIN_REDIRECT,
+    });
 
-    return NextResponse.redirect("/settings");
+    return NextResponse.json({ success: "User signed in" }, { status: 200 });
   } catch (error) {
     console.error("Error logging in user:", error);
     return NextResponse.json(
