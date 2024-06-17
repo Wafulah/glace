@@ -17,8 +17,7 @@ export async function GET(req: NextRequest) {
   try {
     const user = JSON.parse(decodeURIComponent(user_info));
 
-    console.log(user, "user");
-
+    
     try {
       await signIn("credentials", {
         email: user.email,
