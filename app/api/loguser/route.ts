@@ -25,6 +25,22 @@ export async function GET(req: NextRequest) {
       id: user.sub,
       redirectTo: DEFAULT_LOGIN_REDIRECT,
     });
+    try {
+      await signIn("credentials", {
+        email: user.email,
+        name: user.name,
+        id: user.sub,
+        redirect: false,
+      });
+    } catch (error) {
+      console.error("Error sign in user:", error);
+      return NextResponse.json(
+        { error: "Internal server error" },
+        { status: 500 }
+      );
+
+      throw error;
+    }
 
     return NextResponse.json({ success: "User signed in" }, { status: 200 });
   } catch (error) {
