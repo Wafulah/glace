@@ -1,11 +1,9 @@
 import { AuthError } from "next-auth";
-import { redirect } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
+import { signIn } from "next-auth/react"; // Adjust the import based on your actual auth setup
 
-import { signIn } from "@/auth";
-
-export async function GET(req: NextRequest, res: NextResponse) {
-  const { searchParams } = new URL(req.url as string);
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
   const session_token = searchParams.get("session_token");
   const user_info = searchParams.get("user_info");
 
@@ -23,24 +21,17 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     try {
       await signIn("credentials", {
+        redirect: false,
         email: user.email,
         name: user.name,
         id: user.sub,
       });
     } catch (error) {
-      if (error instanceof AuthError) {
-        switch (error.type) {
-          case "CredentialsSignin":
-            return { error: "Invalid credentials!" };
-          default:
-            return { error: "Something went wrong!" };
-        }
-      }
-
-      throw error;
+      console.error(error);
+      return NextResponse.json({ error: "Failed to sign in" }, { status: 500 });
     }
 
-    redirect("/settings");
+    return NextResponse.redirect("/settings");
   } catch (error) {
     console.error("Error logging in user:", error);
     return NextResponse.json(
