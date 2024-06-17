@@ -3,7 +3,6 @@ import NextAuth from "next-auth";
 import authConfig from "@/auth.config";
 import { getUserById } from "@/data/user";
 
-
 export const {
   handlers: { GET, POST },
   auth,
@@ -17,44 +16,40 @@ export const {
   },
   callbacks: {
     async signIn({ user }) {
-
+      console.log("user", user);
       const existingUser = await getUserById(user.id!);
 
       if (!existingUser) return false;
 
-      
       return true;
     },
     async session({ token, session }) {
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
-
-     
+      console.log("session", session);
 
       if (session.user) {
         session.user.name = token.name;
         session.user.email = token.email!;
-        
       }
 
       return session;
     },
     async jwt({ token }) {
       if (!token.sub) return token;
-
+      console.log("token", token);
       const existingUser = await getUserById(token.sub);
 
       if (!existingUser) return token;
 
       token.name = existingUser.name;
       token.email = existingUser.email;
-      
 
       return token;
     },
   },
-  
+
   session: { strategy: "jwt" },
   ...authConfig,
 });

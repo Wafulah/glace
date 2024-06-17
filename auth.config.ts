@@ -1,4 +1,3 @@
-
 import type { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
@@ -40,11 +39,10 @@ export default {
         email: { label: "Email", type: "text" },
         name: { label: "Name", type: "text" },
         id: { label: "Id", type: "text" },
-        
       },
       async authorize(credentials) {
         const { id, email, name } = credentials;
-
+        console.log("email", credentials);
         const user = await getUserByEmail(email as string);
         if (!user.id) return null;
 

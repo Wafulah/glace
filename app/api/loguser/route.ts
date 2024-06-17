@@ -1,3 +1,4 @@
+import { AuthError } from "next-auth";
 import { redirect } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -18,11 +19,26 @@ export async function GET(req: NextRequest, res: NextResponse) {
   try {
     const user = JSON.parse(decodeURIComponent(user_info));
 
-    await signIn("credentials", {
+    console.log(user);
+
+    try {
+      await signIn("credentials", {
         email: user.email,
         name: user.name,
         id: user.sub,
       });
+    } catch (error) {
+      if (error instanceof AuthError) {
+        switch (error.type) {
+          case "CredentialsSignin":
+            return { error: "Invalid credentials!" };
+          default:
+            return { error: "Something went wrong!" };
+        }
+      }
+
+      throw error;
+    }
 
     redirect("/settings");
   } catch (error) {
