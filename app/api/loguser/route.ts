@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
         name: user.name,
         id: user.sub,
         picture: user.picture,
-        redirectTo: DEFAULT_LOGIN_REDIRECT,
+        redirect: false,
       });
     } catch (error) {
       console.error("Error sign in user:", error);
@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
       throw error;
     }
 
-    return NextResponse.json({ success: "User signed in" }, { status: 200 });
+    return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT));
   } catch (error) {
     console.error("Error logging in user:", error);
     return NextResponse.json(

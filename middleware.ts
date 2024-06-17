@@ -32,9 +32,7 @@ export default auth((req) => {
   }
 
   if (isLoginApiCall) {
-    if (isLoggedIn) {
-      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT));
-    }
+    
     return;
   }
 
