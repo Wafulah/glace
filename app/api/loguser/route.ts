@@ -1,6 +1,6 @@
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { NextRequest, NextResponse } from "next/server";
-import { signIn } from "next-auth/react"; // Adjust the import based on your actual auth setup
+import { signIn } from "@/auth";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
