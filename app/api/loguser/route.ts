@@ -19,18 +19,11 @@ export async function GET(req: NextRequest) {
 
     console.log(user, "user");
 
-    await signIn("credentials", {
-      email: user.email,
-      name: user.name,
-      id: user.sub,
-      redirectTo: DEFAULT_LOGIN_REDIRECT,
-    });
     try {
       await signIn("credentials", {
         email: user.email,
         name: user.name,
         id: user.sub,
-        redirect: false,
       });
     } catch (error) {
       console.error("Error sign in user:", error);
