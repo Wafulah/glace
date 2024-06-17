@@ -17,13 +17,13 @@ export async function GET(req: NextRequest) {
   try {
     const user = JSON.parse(decodeURIComponent(user_info));
 
-    
     try {
       await signIn("credentials", {
         email: user.email,
         name: user.name,
         id: user.sub,
         picture: user.picture,
+        redirectTo: DEFAULT_LOGIN_REDIRECT,
       });
     } catch (error) {
       console.error("Error sign in user:", error);
