@@ -16,11 +16,7 @@ export const {
   },
   callbacks: {
     async signIn({ user }) {
-      console.log("user", user);
-      const existingUser = await getUserById(user.id!);
-
-      if (!existingUser) return false;
-
+      
       return true;
     },
     async session({ token, session }) {
