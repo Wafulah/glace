@@ -25,15 +25,9 @@ export const Social = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const { access_token, user } = await response.json();
-      console.log(access_token, user);
-      // Assuming oauth-login is a function you have to handle the login process with AuthJS
-      await signIn("credentials", {
-        user,
-      });
+      const { authUrl } = await response.json();
+      window.location.href = authUrl;
 
-      // Redirect or navigate user after successful login
-      // window.location.href = DEFAULT_LOGIN_REDIRECT;
     } catch (error) {
       console.error("Error:", error);
       // Handle error cases
