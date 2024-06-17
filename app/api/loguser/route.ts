@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
       throw error;
     }
 
-    return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT));
+    return Response.redirect(new URL(`https://glace-store.vercel.app/${DEFAULT_LOGIN_REDIRECT}`));
   } catch (error) {
     console.error("Error logging in user:", error);
     return NextResponse.json(
