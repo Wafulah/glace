@@ -6,7 +6,7 @@ import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 export const Social = () => {
   const fullUrl = DEFAULT_LOGIN_REDIRECT;
-  const callbackUrl = `https://glace-api-vhkd.onrender.com/${fullUrl}`;
+  const callbackUrl = `https://glace-api-vhkd.onrender.com${fullUrl}`;
   const onClick = async () => {
     const response = await fetch("https://glace-api-vhkd.onrender.com/api/auth/google", {
       method: "POST",
