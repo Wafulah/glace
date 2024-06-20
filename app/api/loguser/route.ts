@@ -23,6 +23,7 @@ export async function GET(req: NextRequest) {
         name: user.name,
         id: user.sub,
         picture: user.picture,
+        session_token:session_token,
         redirect: false,
       });
     } catch (error) {

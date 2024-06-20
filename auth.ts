@@ -28,6 +28,7 @@ export const {
       if (session.user) {
         session.user.name = token.name;
         session.user.email = token.email!;
+        session.user.session_token = token.session_token as string;
       }
 
       return session;
@@ -41,6 +42,7 @@ export const {
 
       token.name = existingUser.name;
       token.email = existingUser.email;
+      token.session_token =  existingUser.session_token;
 
       return token;
     },
@@ -48,4 +50,4 @@ export const {
 
   session: { strategy: "jwt" },
   ...authConfig,
-});
+})
