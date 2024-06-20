@@ -6,7 +6,7 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const session_token = searchParams.get("session_token");
   const user_info = searchParams.get("user_info");
-  console.get(session_token,"session_token");
+  console.log(session_token,"session_token");
   if (!session_token || !user_info) {
     return NextResponse.json(
       { error: "Missing session_token or user_info" },
