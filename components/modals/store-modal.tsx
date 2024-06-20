@@ -12,6 +12,7 @@ import { Modal } from "@/components/ui/modal";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useStoreModal } from "@/hooks/use-store-modal";
+import { useCurrentUser } from "@/hooks/use-current-user";
 import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
@@ -21,6 +22,7 @@ const formSchema = z.object({
 export const StoreModal = () => {
   const storeModal = useStoreModal();
   const router = useRouter();
+  const user = useCurrentUser();
 
   const [loading, setLoading] = useState(false);
 
@@ -34,7 +36,9 @@ export const StoreModal = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       setLoading(true);
-      const response = await axios.post('/api/stores', values);
+      const response = await axios.post('${process.env.NEXT_PUBLIC_API_ALL_URL}/api/stores', values,{headers: {
+        'Authorization': `Bearer ${user?.session_token}`,
+    },});
       window.location.assign(`/${response.data.id}`);
     } catch (error) {
       toast.error('Something went wrong');
@@ -62,7 +66,7 @@ export const StoreModal = () => {
                     <FormItem>
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <Input disabled={loading} placeholder="E-Commerce" {...field} />
+                        <Input disabled={loading} placeholder="Store Name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
