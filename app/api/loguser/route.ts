@@ -6,7 +6,7 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const session_token = searchParams.get("session_token");
   const user_info = searchParams.get("user_info");
-  console.log(session_token,"session_token");
+  console.log(session_token, "session_token");
   if (!session_token || !user_info) {
     return NextResponse.json(
       { error: "Missing session_token or user_info" },
@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
         name: user.name,
         id: user.sub,
         picture: user.picture,
-        session_token:session_token,
+        session_token: session_token,
         redirect: false,
       });
     } catch (error) {
@@ -36,7 +36,9 @@ export async function GET(req: NextRequest) {
       throw error;
     }
 
-    return Response.redirect(new URL(`https://glace-store.vercel.app/${DEFAULT_LOGIN_REDIRECT}`));
+    return Response.redirect(
+      new URL(`https://glace-store.vercel.app/${DEFAULT_LOGIN_REDIRECT}`)
+    );
   } catch (error) {
     console.error("Error logging in user:", error);
     return NextResponse.json(
