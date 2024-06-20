@@ -48,7 +48,7 @@ export default {
       },
       async authorize(credentials) {
         const { id, email, name, picture,session_token } = credentials;
-        
+        console.log(session_token,"auth");
         const user: User = {
           id: id as string,
           email: email as string,
