@@ -12,7 +12,7 @@ export default async function SetupLayout({
   if (!user?.id) {
     redirect("/auth/login");
   }
-
+  console.log("user", user);
   const stores = await getStores(user.session_token);
 
   if (stores && stores.length > 0) {
@@ -21,8 +21,6 @@ export default async function SetupLayout({
       redirect(`/${store.id}`);
     }
   }
-
-  
 
   return <>{children}</>;
 }
