@@ -191,7 +191,7 @@ export const OrderForm: React.FC<OrderFormProps> = ({ initialData }) => {
                                             <Calendar
                                                 mode="single"
                                                 selected={field.value}
-                                                onSelect={(date) =>
+                                                onSelect={(date: Date | undefined) =>
                                                     field.onChange(
                                                         date instanceof Date
                                                             ? date
