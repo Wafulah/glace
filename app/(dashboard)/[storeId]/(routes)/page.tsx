@@ -24,6 +24,7 @@ interface DashboardPageProps {
 
 const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
   const user = await currentUser();
+  console.log(user);
   const user_token = user?.session_token || "";
   const totalRevenue = await getTotalRevenue(params.storeId, user_token);
   const graphRevenue = await getGraphRevenue(params.storeId, user_token);
