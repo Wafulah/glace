@@ -1,9 +1,8 @@
 import { redirect } from "next/navigation";
 import { currentUser } from "@/lib/auth";
-
+import { getStore} from "@/actions/get-store";
 import Navbar from "@/components/navbar";
-import prismadb from "@/lib/prismadb";
-import { UserRole, Allowed } from "@prisma/client";
+
 
 export default async function DashboardLayout({
     children,
@@ -18,17 +17,8 @@ export default async function DashboardLayout({
         redirect("auth/login");
     }
 
-    if (user?.allowed !== "YES") {
-        
-        redirect("/onboarding");
-    } 
-
-    const store = await prismadb.store.findFirst({
-        where: {
-            id: params.storeId,
-            userId: user?.id,
-        },
-    });
+    
+    const store = await getStore(params.storeId,user?.session_token as string);
 
     if (!store) {
         redirect("/auth/login");

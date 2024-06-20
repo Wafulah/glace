@@ -69,6 +69,7 @@ const ProductPage = async ({
           initialData={order}
           user_token={user?.session_token}
         />
+        <OrderProductModal products={products} initialData={order.orderItems} />
       </div>
     </div>
   );
