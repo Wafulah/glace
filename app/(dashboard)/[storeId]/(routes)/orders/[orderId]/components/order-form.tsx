@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { LuTrash2 as Trash } from "react-icons/lu";
-import { Order } from "@prisma/client";
+import { Order } from "@/types";
 import { useParams, useRouter } from "next/navigation";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
