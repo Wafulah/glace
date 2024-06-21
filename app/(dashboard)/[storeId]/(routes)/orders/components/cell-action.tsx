@@ -43,7 +43,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         deliveryData,
         {
           headers: {
-            Authorization: `Bearer ${user?.session_token}`,
+            Authorization: `Bearer ${user?.jwt_token}`,
           },
         }
       );

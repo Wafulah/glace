@@ -47,14 +47,14 @@ export default {
         session_token: { label: "Session_token", type: "text" },
       },
       async authorize(credentials) {
-        const { id, email, name, picture,session_token } = credentials;
-        console.log(session_token,"auth");
+        const { id, email, name, picture, session_token } = credentials;
+
         const user: User = {
           id: id as string,
           email: email as string,
           name: name as string,
           picture: picture as string,
-          session_token: session_token as string
+          session_token: session_token as string,
         };
 
         return user;

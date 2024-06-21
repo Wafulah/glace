@@ -25,16 +25,16 @@ const ProductPage = async ({
   const user = await currentUser();
   const order = await getOrder(
     params.storeId,
-    user?.session_token as string,
+    user?.jwt_token as string,
     params.orderId
   );
   const products = await getProducts(
     params.storeId,
-    user?.session_token as string
+    user?.jwt_token as string
   );
   const customers = await getCustomers(
     params.storeId,
-    user?.session_token as string
+    user?.jwt_token as string
   );
   if (!order) {
     redirect("/auth/login");
@@ -67,7 +67,7 @@ const ProductPage = async ({
           products={products}
           customers={customers}
           initialData={order}
-          user_token={user?.session_token}
+          jwt_token={user?.jwt_token}
         />
         <OrderProductModal products={products} initialData={order.orderItems} />
       </div>

@@ -18,7 +18,7 @@ export default async function DashboardLayout({
     }
 
     
-    const store = await getStore(params.storeId,user?.session_token as string);
+    const store = await getStore(params.storeId,user?.jwt_token as string);
 
     if (!store) {
         redirect("/auth/login");

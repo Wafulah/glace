@@ -10,7 +10,7 @@ const CountyPage = async ({
   const user = await currentUser();
   const county = await getCounty(
     params.storeId,
-    user?.session_token as string,
+    user?.jwt_token as string,
     params.countyId
   );
 

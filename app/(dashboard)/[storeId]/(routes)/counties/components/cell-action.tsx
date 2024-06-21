@@ -43,7 +43,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/counties/${data.id}`,
         {
           headers: {
-            Authorization: `Bearer ${user?.session_token}`,
+            Authorization: `Bearer ${user?.jwt_token}`,
           },
         }
       );

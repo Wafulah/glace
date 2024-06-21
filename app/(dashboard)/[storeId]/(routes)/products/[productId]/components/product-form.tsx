@@ -56,13 +56,13 @@ interface ProductFormProps {
       })
     | null;
   categories: Category[];
-  user_token?: string;
+  jwt_token?: string;
 }
 
 export const ProductForm: React.FC<ProductFormProps> = ({
   initialData,
   categories,
-  user_token,
+  jwt_token,
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -107,7 +107,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           data,
           {
             headers: {
-              Authorization: `Bearer ${user_token}`,
+              Authorization: `Bearer ${jwt_token}`,
             },
           }
         );
@@ -117,7 +117,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           data,
           {
             headers: {
-              Authorization: `Bearer ${user_token}`,
+              Authorization: `Bearer ${jwt_token}`,
             },
           }
         );
@@ -139,7 +139,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/products/${params.productId}`,
         {
           headers: {
-            Authorization: `Bearer ${user_token}`,
+            Authorization: `Bearer ${jwt_token}`,
           },
         }
       );

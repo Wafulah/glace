@@ -104,7 +104,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
       setLoading(true);
       await axios.patch(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/stores/${params.storeId}`, data, {
         headers: {
-            'Authorization': `Bearer ${user?.session_token}`,
+            'Authorization': `Bearer ${user?.jwt_token}`,
         },
     });
       router.refresh();
@@ -121,7 +121,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
       setLoading(true);
       await axios.delete(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/stores/${params.storeId}`, {
         headers: {
-            'Authorization': `Bearer ${user?.session_token}`,
+            'Authorization': `Bearer ${user?.jwt_token}`,
         },
     });
       router.refresh();

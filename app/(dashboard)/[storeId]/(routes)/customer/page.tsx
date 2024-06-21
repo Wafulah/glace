@@ -14,7 +14,7 @@ const CustomersPage = async ({ params }: { params: { storeId: string } }) => {
   const user = await currentUser();
   const customers = await getCustomers(
     params.storeId,
-    user?.session_token as string
+    user?.jwt_token as string
   );
 
   const formattedCustomers: CustomerColumn[] = customers.map((item) => ({

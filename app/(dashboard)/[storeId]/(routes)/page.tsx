@@ -24,12 +24,12 @@ interface DashboardPageProps {
 
 const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
   const user = await currentUser();
-  console.log(user);
-  const user_token = user?.session_token || "";
-  const totalRevenue = await getTotalRevenue(params.storeId, user_token);
-  const graphRevenue = await getGraphRevenue(params.storeId, user_token);
-  const salesCount = await getSalesCount(params.storeId, user_token);
-  const stockCount = await getStockCount(params.storeId, user_token);
+  
+  const jwt_token = user?.jwt_token || "";
+  const totalRevenue = await getTotalRevenue(params.storeId, jwt_token);
+  const graphRevenue = await getGraphRevenue(params.storeId, jwt_token);
+  const salesCount = await getSalesCount(params.storeId, jwt_token);
+  const stockCount = await getStockCount(params.storeId, jwt_token);
 
   return (
     <div className="flex-col">

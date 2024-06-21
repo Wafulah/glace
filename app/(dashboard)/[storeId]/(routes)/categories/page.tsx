@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
   const user = await currentUser();
-  const categories = await getCategories(params.storeId, user?.session_token as string);
+  const categories = await getCategories(params.storeId, user?.jwt_token as string);
 
   const formattedCategories: CategoryColumn[] = categories.map((item) => ({
     id: item.id,

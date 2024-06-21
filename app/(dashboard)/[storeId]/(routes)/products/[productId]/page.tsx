@@ -20,13 +20,13 @@ const ProductPage = async ({
 
   const product = await getProduct(
     params.storeId,
-    user?.session_token as string,
+    user?.jwt_token as string,
     params.productId
   );
 
   const categories = await getCategories(
     params.storeId,
-    user?.session_token as string
+    user?.jwt_token as string
   );
 
   return (
@@ -34,7 +34,7 @@ const ProductPage = async ({
       <div className="flex-1 space-y-4 p-8 pt-6">
         <ProductForm
           categories={categories}
-          user_token={user?.session_token}
+          jwt_token={user?.jwt_token}
           initialData={product}
         />
       </div>

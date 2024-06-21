@@ -16,15 +16,15 @@ const CategoryPage = async ({
   const user = await useCurrentUser();
   const category = await getCategory(
     params.storeId,
-    user?.session_token as string,
+    user?.jwt_token as string,
     params.categoryId
   );
-  const user_token: string = user?.session_token || "";
+  const jwt_token: string = user?.jwt_token || "";
 
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <CategoryForm user_token={user_token} initialData={category} />
+        <CategoryForm jwt_token={jwt_token} initialData={category} />
       </div>
     </div>
   );

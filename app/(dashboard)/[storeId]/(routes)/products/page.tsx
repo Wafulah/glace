@@ -19,7 +19,7 @@ const ProductsPage = async ({ params }: { params: { storeId: string } }) => {
 
   const products = await getProducts(
     params.storeId,
-    user?.session_token as string
+    user?.jwt_token as string
   );
 
   const formattedProducts: ProductColumn[] = products.map((item) => ({

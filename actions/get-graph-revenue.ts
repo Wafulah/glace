@@ -7,10 +7,10 @@ interface GraphData {
 
 export const getGraphRevenue = async (
   storeId: string,
-  user_token: string
+  jwt_token: string
 ): Promise<GraphData[]> => {
   //is paid==true
-  const paidOrders = await getOrders(storeId, user_token,true);
+  const paidOrders = await getOrders(storeId, jwt_token, true);
 
   const monthlyRevenue: { [key: number]: number } = {};
 

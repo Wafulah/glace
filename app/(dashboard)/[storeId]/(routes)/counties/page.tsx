@@ -21,7 +21,7 @@ const CountiesPage = async ({
     redirect('/auth/login');
   }
   const user = await currentUser(); 
-  const counties = await getCounties(params.storeId,user?.session_token as string);
+  const counties = await getCounties(params.storeId,user?.jwt_token as string);
 
   const formattedCounties: CountyColumn[] = counties.map((item) => ({
     id: item.id,

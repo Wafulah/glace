@@ -37,7 +37,7 @@ export const StoreModal = () => {
     try {
       setLoading(true);
       const response = await axios.post('${process.env.NEXT_PUBLIC_API_ALL_URL}/api/stores', values,{headers: {
-        'Authorization': `Bearer ${user?.session_token}`,
+        'Authorization': `Bearer ${user?.jwt_token}`,
     },});
       window.location.assign(`/${response.data.id}`);
     } catch (error) {

@@ -85,7 +85,7 @@ interface AddOrderFormProps {
   };
   customers: Customer[];
   products: Product[];
-  user_token?: string;
+  jwt_token?: string;
 }
 
 type Checked = DropdownMenuCheckboxItemProps["checked"];
@@ -95,7 +95,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   initialData,
   customers,
   products,
-  user_token,
+  jwt_token,
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -145,7 +145,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
           data,
           {
             headers: {
-              Authorization: `Bearer ${user_token}`,
+              Authorization: `Bearer ${jwt_token}`,
             },
           }
         );
@@ -155,7 +155,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
           data,
           {
             headers: {
-              Authorization: `Bearer ${user_token}`,
+              Authorization: `Bearer ${jwt_token}`,
             },
           }
         );
@@ -176,7 +176,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
         `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/stores/${params.storeId}`,
         {
           headers: {
-            Authorization: `Bearer ${user_token}`,
+            Authorization: `Bearer ${jwt_token}`,
           },
         }
       );

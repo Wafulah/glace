@@ -74,7 +74,7 @@ export const CountyForm: React.FC<CountyFormProps> = ({ initialData }) => {
           data,
           {
             headers: {
-              Authorization: `Bearer ${user?.session_token}`,
+              Authorization: `Bearer ${user?.jwt_token}`,
             },
           }
         );
@@ -84,7 +84,7 @@ export const CountyForm: React.FC<CountyFormProps> = ({ initialData }) => {
           data,
           {
             headers: {
-              Authorization: `Bearer ${user?.session_token}`,
+              Authorization: `Bearer ${user?.jwt_token}`,
             },
           }
         );
@@ -106,7 +106,7 @@ export const CountyForm: React.FC<CountyFormProps> = ({ initialData }) => {
         `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/counties/${params.countyId}`,
         {
           headers: {
-            Authorization: `Bearer ${user?.session_token}`,
+            Authorization: `Bearer ${user?.jwt_token}`,
           },
         }
       );

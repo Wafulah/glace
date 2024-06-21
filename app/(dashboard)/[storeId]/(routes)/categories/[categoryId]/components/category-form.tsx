@@ -43,12 +43,12 @@ type CategoryFormValues = z.infer<typeof formSchema>;
 
 interface CategoryFormProps {
     initialData: Category | null;
-    user_token: string;
+    jwt_token: string;
 }
 
 export const CategoryForm: React.FC<CategoryFormProps> = ({
     initialData,
-    user_token,
+    jwt_token,
 }) => {
     const params = useParams();
     const router = useRouter();
@@ -80,14 +80,14 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                 
                 await axios.patch(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/categories/${params.categoryId}`, data, {
                     headers: {
-                        'Authorization': `Bearer ${user_token}`,
+                        'Authorization': `Bearer ${jwt_token}`,
                     },
                 });
             } else {
   
                 await axios.patch(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/categories`, data, {
                     headers: {
-                        'Authorization': `Bearer ${user_token}`,
+                        'Authorization': `Bearer ${jwt_token}`,
                     },
                 });
             }
@@ -107,7 +107,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
             
             await axios.delete(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/categories/${params.categoryId}`, {
                 headers: {
-                    'Authorization': `Bearer ${user_token}`,
+                    'Authorization': `Bearer ${jwt_token}`,
                 },
             });
             router.refresh();

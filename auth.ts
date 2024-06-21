@@ -24,11 +24,10 @@ export const {
       }
 
       if (session.user) {
-        console.log(token.session_token, "token session");
         session.user.name = token.name;
         session.user.email = token.email!;
         session.user.session_token = token.session_token as string;
-        console.log(session, session.user.session_token, "session");
+        session.user.jwt_token = token.jwt_token as string;
       }
 
       return session;
@@ -36,15 +35,18 @@ export const {
     async jwt({ token }) {
       if (!token.sub) return token;
 
-      const existingUser = await getUserById(token.sub);
+      const existingUser = await getUserById(
+        token.sub,
+        token.session_token as string
+      );
 
       if (!existingUser) return token;
-      console.log(token, "tokenn");
-      console.log(existingUser, "existing user");
+
       token.name = existingUser.name;
       token.email = existingUser.email;
       token.session_token = existingUser.session_token;
-      console.log(token, token.session_token, "token.sessin");
+      token.jwt_token = existingUser.jwt_token;
+
       return token;
     },
   },

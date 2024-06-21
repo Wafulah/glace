@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
   const user = await currentUser();
-  const orders = await getOrders(params.storeId, user?.session_token as string);
+  const orders = await getOrders(params.storeId, user?.jwt_token as string);
 
   const formattedOrders: OrderColumn[] = orders.map((item) => ({
     id: item.id,

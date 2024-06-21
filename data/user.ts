@@ -18,8 +18,8 @@ export const getUserByEmail = async (email: string) => {
   }
 };
 
-export const getUserById = async (id: string) => {
-  const url = `${BASE_URL}get-user-by-id/?id=${encodeURIComponent(id)}`;
+export const getUserById = async (id: string,access_token: string) => {
+  const url = `${BASE_URL}get-user-by-id/?id=${encodeURIComponent(id)}&access_token=${encodeURIComponent(access_token)}`;
 
   try {
     const response = await fetch(url);

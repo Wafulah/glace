@@ -38,12 +38,12 @@ type CustomerFormValues = z.infer<typeof formSchema>;
 
 interface CustomerFormProps {
   initialData: Customer | null;
-  user_token: string;
+  jwt_token: string;
 }
 
 export const CustomerForm: React.FC<CustomerFormProps> = ({
   initialData,
-  user_token,
+  jwt_token,
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -75,7 +75,7 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
           data,
           {
             headers: {
-              Authorization: `Bearer ${user_token}`,
+              Authorization: `Bearer ${jwt_token}`,
             },
           }
         );
@@ -85,7 +85,7 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
           data,
           {
             headers: {
-              Authorization: `Bearer ${user_token}`,
+              Authorization: `Bearer ${jwt_token}`,
             },
           }
         );
@@ -108,7 +108,7 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
         `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/customers/${params.customerId}`,
         {
           headers: {
-            Authorization: `Bearer ${user_token}`,
+            Authorization: `Bearer ${jwt_token}`,
           },
         }
       );
