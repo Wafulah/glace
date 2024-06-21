@@ -26,7 +26,7 @@ export const getStores = async (jwt_token: string): Promise<Store[]> => {
         return stores;
     } catch (error) {
         console.error('[GET_STORES_ERROR]', error);
-        throw error;
+        return []; 
     }
 };
 

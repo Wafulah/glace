@@ -12,8 +12,8 @@ export default async function SetupLayout({
   if (!user?.id) {
     redirect("/auth/login");
   }
-  console.log("user", user);
-  const stores = await getStores(user.session_token);
+
+  const stores = await getStores(user.jwt_token);
 
   if (stores && stores.length > 0) {
     const store = stores[0];
