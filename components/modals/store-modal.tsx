@@ -25,7 +25,7 @@ export const StoreModal = () => {
   const user = useCurrentUser();
 
   const [loading, setLoading] = useState(false);
-
+  const API_URL = `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/stores`;
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,9 +36,12 @@ export const StoreModal = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       setLoading(true);
-      const response = await axios.post('${process.env.NEXT_PUBLIC_API_ALL_URL}/api/stores', values,{headers: {
-        'Authorization': `Bearer ${user?.jwt_token}`,
-    },});
+      const response = await axios.post(API_URL, values, {
+        headers: {
+            'Authorization': `Bearer ${user?.jwt_token}`,
+            'Content-Type': 'application/json',
+        },
+    });
       window.location.assign(`/${response.data.id}`);
     } catch (error) {
       toast.error('Something went wrong');
@@ -50,7 +53,7 @@ export const StoreModal = () => {
   return (
     <Modal
       title="Create store"
-      description="Add a new store to manage products and categories."
+      description="Add a new store to manage customers and orders."
       isOpen={storeModal.isOpen} 
       onClose={storeModal.onClose}
     >
