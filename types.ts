@@ -107,3 +107,122 @@ export interface County {
   createdAt: Date; // ISO string format date
   updatedAt: Date; // ISO string format date
 }
+
+//defaults
+// Default User
+export const defaultUser: User = {
+  id: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  image: "",
+  phoneNumber: "",
+  session_token: ""
+};
+
+// Default Image
+export const defaultImage: Image = {
+  id: "",
+  url: "",
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
+// Default Category
+export const defaultCategory: Category = {
+  id: "",
+  store: null as any, // Placeholder for Store reference
+  name: "",
+  imageUrl: "",
+  description: "",
+  createdAt: new Date(),
+  updatedAt: new Date()
+};
+
+// Default Product
+export const defaultProduct: Product = {
+  id: "",
+  store: null as any, // Placeholder for Store reference
+  category: defaultCategory,
+  name: "",
+  price: "0",
+  quantity: 0,
+  rating: 0,
+  description: "",
+  isArchived: false,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  images: [defaultImage]
+};
+
+// Default Store
+export const defaultStore: Store = {
+  id: "",
+  name: "",
+  user: defaultUser,
+  description: "",
+  latitude: 0,
+  longitude: 0,
+  paybill: "",
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  images: [defaultImage],
+  products: [defaultProduct],
+  categories: [defaultCategory],
+  counties: []
+};
+
+// Default County
+export const defaultCounty: County = {
+  id: "",
+  store: defaultStore,
+  name: "",
+  description: "",
+  createdAt: new Date(),
+  updatedAt: new Date()
+};
+
+// Default Customer
+export const defaultCustomer: Customer = {
+  id: "",
+  store: defaultStore,
+  firstName: "",
+  lastName: "",
+  email: "",
+  image: "",
+  phoneNumber: ""
+};
+
+// Default OrderItem
+export const defaultOrderItem: OrderItem = {
+  id: "",
+  order: null as any, // Placeholder for Order reference
+  product: defaultProduct,
+  quantity: 1,
+  price: 0
+};
+
+// Default Order
+export const defaultOrder: Order = {
+  id: "",
+  store: defaultStore,
+  customer: defaultCustomer,
+  isPaid: false,
+  isDelivered: false,
+  phone: "",
+  address: "",
+  county: defaultCounty,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  deliveryDate: new Date(),
+  orderItems: [defaultOrderItem]
+};
+
+// Default UserProfile
+export const defaultUserProfile: UserProfile = {
+  id: "",
+  email: "",
+  phoneNumber: "",
+  firstName: "",
+  lastName: ""
+};

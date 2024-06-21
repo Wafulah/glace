@@ -20,6 +20,7 @@ export const OrderClient: React.FC<OrderClientProps> = ({ data }) => {
   const router = useRouter();
   return (
     <>
+    <div className="flex items-center justify-between">
       <Heading
         title={`Orders (${data.length})`}
         description="Manage orders for your store"
@@ -27,6 +28,7 @@ export const OrderClient: React.FC<OrderClientProps> = ({ data }) => {
       <Button onClick={() => router.push(`/${params.storeId}/orders/new`)}>
         <Plus className="mr-2 h-4 w-4" /> Add New
       </Button>
+      </div>
       <Separator />
       <DataTable searchKey="buyer" columns={columns} data={data} />
       <Heading title="API" description="API Calls for Orders" />

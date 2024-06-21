@@ -44,7 +44,7 @@ const formSchema = z.object({
 
 interface StoreModalProps {
   products: Product[];
-  initialData: OrderItem[];
+  initialData: OrderItem[] | null;
 }
 
 export const OrderProductModal: React.FC<StoreModalProps> = ({

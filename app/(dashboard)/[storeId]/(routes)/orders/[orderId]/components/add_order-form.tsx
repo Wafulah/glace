@@ -80,7 +80,7 @@ const formSchema = z.object({
 type OrderFormValues = z.infer<typeof formSchema>;
 
 interface AddOrderFormProps {
-  initialData: Order & {
+  initialData: Order | null & {
     orderItems: OrderItem[];
   };
   customers: Customer[];

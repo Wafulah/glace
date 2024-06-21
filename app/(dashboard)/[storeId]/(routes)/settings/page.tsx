@@ -18,7 +18,7 @@ const SettingsPage = async ({ params }: { params: { storeId: string } }) => {
     redirect("/auth/login");
   }
 
-  const store = await getStore(params.storeId, user.session_token);
+  const store = await getStore(params.storeId, user.jwt_token);
 
   if (!store) {
     redirect("/");

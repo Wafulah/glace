@@ -12,6 +12,7 @@ import { OrderProductModal } from "./components/order-products";
 import { getOrder } from "@/actions/get-order";
 import { getProducts } from "@/actions/get-products";
 import { getCustomers } from "@/actions/get-customers";
+import { defaultOrder } from "@/types";
 
 export const metadata: Metadata = {
   title: "Order",
@@ -27,18 +28,12 @@ const ProductPage = async ({
     params.storeId,
     user?.jwt_token as string,
     params.orderId
-  );
-  const products = await getProducts(
-    params.storeId,
-    user?.jwt_token as string
-  );
+  ) || defaultOrder;
+  const products = await getProducts(params.storeId, user?.jwt_token as string);
   const customers = await getCustomers(
     params.storeId,
     user?.jwt_token as string
   );
-  if (!order) {
-    redirect("/auth/login");
-  }
 
   const orderDetails: OrderCol = {
     id: order?.id ?? "N/A",
