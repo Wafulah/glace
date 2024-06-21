@@ -11,21 +11,19 @@ import { currentUser } from "@/lib/auth";
 import { generateVerificationToken } from "@/lib/tokens";
 import { sendVerificationEmail } from "@/lib/mail";
 
-export const settings = async (
-  values: z.infer<typeof SettingsSchema>
-) => {
+export const settings = async (values: z.infer<typeof SettingsSchema>) => {
   const user = await currentUser();
 
   if (!user) {
-    return { error: "Unauthorized" }
+    return { error: "Unauthorized" };
   }
+  const session_token = user?.session_token || "";
 
-  const dbUser = await getUserById(user.id as string);
+  const dbUser = await getUserById(user.id as string, session_token);
 
   if (!dbUser) {
-    return { error: "Unauthorized" }
+    return { error: "Unauthorized" };
   }
 
-
-  return { success: "Settings Updated!" }
-}
+  return { success: "Settings Updated!" };
+};
