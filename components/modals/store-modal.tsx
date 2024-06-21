@@ -25,7 +25,7 @@ export const StoreModal = () => {
   const user = useCurrentUser();
 
   const [loading, setLoading] = useState(false);
-  const API_URL = `${process.env.NEXT_PUBLIC_API_ALL_URL}/stores`;
+  const API_URL = `${process.env.NEXT_PUBLIC_API_ALL_URL}/stores/`;
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

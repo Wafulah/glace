@@ -1,6 +1,6 @@
 import {Store} from "@/types"; 
 
-const API_URL = `${process.env.NEXT_PUBLIC_API_ALL_URL}/stores`;
+const API_URL = `${process.env.NEXT_PUBLIC_API_ALL_URL}/stores/`;
 
 
 
