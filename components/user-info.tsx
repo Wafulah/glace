@@ -43,7 +43,7 @@ export const UserInfo = ({
           <p className="text-sm font-medium">
             Email
           </p>
-          <p className="text-[rgb(255,55,0)]  truncate text-xs max-w-[180px] font-mono p-1 bg-slate-100 rounded-md">
+          <p className="text-[rgb(35,90,89)]  truncate text-xs max-w-[180px] font-mono p-1 bg-slate-100 rounded-md">
             {user?.email}
           </p>
         </div>
@@ -59,7 +59,7 @@ export const UserInfo = ({
           <p className="text-sm font-medium">
             JWT Token
           </p>
-          <p className="text-[rgb(255,55,0)]truncate text-xs max-w-[180px] font-mono p-1 bg-slate-100 rounded-md">
+          <p className="text-[rgb(27,68,34)] truncate text-xs max-w-[250px] font-mono p-1 bg-slate-100 rounded-md">
             {user?.jwt_token}
           </p>
         </div>

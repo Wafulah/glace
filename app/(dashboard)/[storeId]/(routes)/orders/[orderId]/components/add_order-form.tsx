@@ -80,9 +80,11 @@ const formSchema = z.object({
 type OrderFormValues = z.infer<typeof formSchema>;
 
 interface AddOrderFormProps {
-  initialData: Order | null & {
-    orderItems: OrderItem[];
-  };
+  initialData:
+    | Order
+    | (null & {
+        orderItems: OrderItem[];
+      });
   customers: Customer[];
   products: Product[];
   jwt_token?: string;
@@ -310,6 +312,27 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
             />
             <FormField
               control={form.control}
+              name="isPaid"
+              render={({ field }) => (
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      // @ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <div className="space-y-1 leading-none">
+                    <FormLabel>isPaid</FormLabel>
+                    <FormDescription>
+                      Check this box if products are paid.
+                    </FormDescription>
+                  </div>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name="deliveryDate"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
@@ -337,7 +360,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
                       <Calendar
                         mode="single"
                         selected={field.value}
-                        onSelect={(date:Date | undefined) =>
+                        onSelect={(date: Date | undefined) =>
                           field.onChange(
                             date instanceof Date ? date : new Date()
                           )
@@ -357,7 +380,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
               )}
             />
             <Button onClick={() => setIsModalOpen(true)}>
-              Add Ordered Products
+              Select Products
             </Button>
             {isModalOpen && (
               <StoreModal

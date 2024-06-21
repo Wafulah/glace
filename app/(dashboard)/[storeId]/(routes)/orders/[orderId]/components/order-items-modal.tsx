@@ -214,17 +214,29 @@ export const StoreModal: React.FC<StoreModalProps> = ({
                     )}
                   />
                   <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-                    <Button disabled={loading} onClick={closeModal}>
+                    <Button
+                      variant="destructive"
+                      disabled={loading}
+                      onClick={closeModal}
+                    >
                       Cancel
                     </Button>
-                    <Button disabled={loading} type="submit">
+                    <Button
+                      variant="secondary"
+                      disabled={loading}
+                      type="submit"
+                    >
                       Continue
                     </Button>
                   </div>
                 </form>
               </Form>
               <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-                <Button disabled={loading} onClick={handleDone}>
+                <Button
+                  className="bg-green-500"
+                  disabled={loading}
+                  onClick={handleDone}
+                >
                   Done
                 </Button>
               </div>
