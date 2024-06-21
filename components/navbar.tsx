@@ -16,7 +16,7 @@ const Navbar = async () => {
     redirect("/auth/login");
   }
 
-  const stores = await getStores(user.session_token);
+  const stores = await getStores(user.jwt_token);
 
   return (
     <div className="border-b">

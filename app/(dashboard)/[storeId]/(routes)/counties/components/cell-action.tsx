@@ -40,7 +40,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
     try {
       setLoading(true);
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/counties/${data.id}`,
+        `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/counties/${data.id}/`,
         {
           headers: {
             Authorization: `Bearer ${user?.jwt_token}`,

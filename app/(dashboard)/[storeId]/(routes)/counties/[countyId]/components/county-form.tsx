@@ -70,7 +70,7 @@ export const CountyForm: React.FC<CountyFormProps> = ({ initialData }) => {
       setLoading(true);
       if (initialData) {
         await axios.patch(
-          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/counties/${params.countyId}`,
+          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/counties/${params.countyId}/`,
           data,
           {
             headers: {
@@ -80,7 +80,7 @@ export const CountyForm: React.FC<CountyFormProps> = ({ initialData }) => {
         );
       } else {
         await axios.post(
-          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/counties`,
+          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/counties/`,
           data,
           {
             headers: {
@@ -103,7 +103,7 @@ export const CountyForm: React.FC<CountyFormProps> = ({ initialData }) => {
     try {
       setLoading(true);
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/counties/${params.countyId}`,
+        `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/counties/${params.countyId}/`,
         {
           headers: {
             Authorization: `Bearer ${user?.jwt_token}`,

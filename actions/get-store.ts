@@ -8,7 +8,7 @@ export const getStore = async (storeid: string, jwt_token: string): Promise<Stor
         throw new Error('User jwt token is required');
     }
 
-    const storeUrl = `${API_URL}/${storeid}`;
+    const storeUrl = `${API_URL}/${storeid}/`;
 
     try {
         const response = await fetch(storeUrl, {

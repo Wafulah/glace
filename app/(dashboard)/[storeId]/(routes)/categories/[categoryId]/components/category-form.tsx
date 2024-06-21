@@ -78,14 +78,14 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
             setLoading(true);
             if (initialData) {
                 
-                await axios.patch(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/categories/${params.categoryId}`, data, {
+                await axios.patch(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/categories/${params.categoryId}/`, data, {
                     headers: {
                         'Authorization': `Bearer ${jwt_token}`,
                     },
                 });
             } else {
   
-                await axios.patch(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/categories`, data, {
+                await axios.post(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/categories/`, data, {
                     headers: {
                         'Authorization': `Bearer ${jwt_token}`,
                     },
@@ -105,7 +105,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
         try {
             setLoading(true);
             
-            await axios.delete(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/categories/${params.categoryId}`, {
+            await axios.delete(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/categories/${params.categoryId}/`, {
                 headers: {
                     'Authorization': `Bearer ${jwt_token}`,
                 },

@@ -10,7 +10,7 @@ export const getCustomers = async (
     throw new Error("Store ID and user jwt token are required");
   }
 
-  const url = `${API_URL}/${store_id}/customers`;
+  const url = `${API_URL}/${store_id}/customers/`;
 
   try {
     const response = await fetch(url, {

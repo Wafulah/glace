@@ -39,7 +39,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
     try {
       setLoading(true);
       await axios.patch(
-        `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/delivered/${data.id}`,
+        `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/delivered/${data.id}/`,
         deliveryData,
         {
           headers: {

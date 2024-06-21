@@ -11,7 +11,7 @@ export const getProducts = async (
     throw new Error("Store ID and user jwt token are required");
   }
 
-  let url = `${API_URL}/${store_id}/products`;
+  let url = `${API_URL}/${store_id}/products/`;
 
   if (typeof isArchived === "boolean") {
     url += `?isArchived=${isArchived}`;

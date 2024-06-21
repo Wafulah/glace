@@ -42,7 +42,7 @@ export const CellAction: React.FC<CellActionProps> = ({
     try {
       setLoading(true);
 
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/categories/${data.id}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/categories/${data.id}/`, {
         headers: {
             'Authorization': `Bearer ${user?.jwt_token}`,
         },

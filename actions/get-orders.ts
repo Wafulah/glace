@@ -11,7 +11,7 @@ export const getOrders = async (
     throw new Error("Store ID and user jwt token are required");
   }
 
-  let url = `${API_URL}/${store_id}/orders`;
+  let url = `${API_URL}/${store_id}/orders/`;
   if (typeof isPaid === "boolean") {
     url += `?isPaid=${isPaid}`;
   }

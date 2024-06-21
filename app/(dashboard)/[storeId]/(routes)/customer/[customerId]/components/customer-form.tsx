@@ -71,7 +71,7 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
       setLoading(true);
       if (initialData) {
         await axios.patch(
-          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/customers/${params.customerId}`,
+          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/customers/${params.customerId}/`,
           data,
           {
             headers: {
@@ -80,8 +80,8 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
           }
         );
       } else {
-        await axios.patch(
-          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/customers`,
+        await axios.post(
+          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/customers/`,
           data,
           {
             headers: {
@@ -105,7 +105,7 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
       setLoading(true);
 
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/customers/${params.customerId}`,
+        `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/customers/${params.customerId}/`,
         {
           headers: {
             Authorization: `Bearer ${jwt_token}`,

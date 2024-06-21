@@ -11,7 +11,7 @@ export const getCounty = async (
     throw new Error("Store ID, county_id and user jwt token are required");
   }
 
-  const url = `${API_URL}/${store_id}/counties/${county_id}`;
+  const url = `${API_URL}/${store_id}/counties/${county_id}/`;
 
   try {
     const response = await fetch(url, {

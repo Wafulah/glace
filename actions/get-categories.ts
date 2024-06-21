@@ -7,7 +7,7 @@ export const getCategories = async (store_id: string, jwt_token: string): Promis
         throw new Error('Store ID and user jwt token are required');
     }
 
-    const url = `${API_URL}/${store_id}/categories`;
+    const url = `${API_URL}/${store_id}/categories/`;
 
     try {
         const response = await fetch(url, {
