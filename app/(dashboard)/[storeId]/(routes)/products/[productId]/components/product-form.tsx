@@ -103,7 +103,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       setLoading(true);
       if (initialData) {
         await axios.patch(
-          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/products/${params.productId}/`,
+          `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/products/${params.productId}/`,
           data,
           {
             headers: {
@@ -113,7 +113,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         );
       } else {
         await axios.post(
-          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/products/`,
+          `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/products/`,
           data,
           {
             headers: {

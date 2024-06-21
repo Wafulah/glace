@@ -143,7 +143,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
       };
       if (initialData) {
         await axios.patch(
-          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/orders/${params.orderId}/`,
+          `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/${params.orderId}/`,
           data,
           {
             headers: {
@@ -153,7 +153,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
         );
       } else {
         await axios.post(
-          `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/orders/`,
+          `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/`,
           data,
           {
             headers: {
@@ -175,7 +175,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     try {
       setLoading(true);
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/stores/${params.storeId}/`,
+        `${process.env.NEXT_PUBLIC_API_ALL_URL}/stores/${params.storeId}/`,
         {
           headers: {
             Authorization: `Bearer ${jwt_token}`,
