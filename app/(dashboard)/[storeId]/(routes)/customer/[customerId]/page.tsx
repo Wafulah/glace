@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { useCurrentUser } from "@/hooks/use-current-user";
+import { currentUser } from "@/lib/auth";
 
 import { getCustomer } from "@/actions/get-customer";
 import { CustomerForm } from "./components/customer-form";
@@ -13,7 +13,7 @@ const CategoryPage = async ({
 }: {
   params: { customerId: string; storeId: string };
 }) => {
-  const user = await useCurrentUser();
+  const user = await currentUser();
   const category = await getCustomer(
     params.storeId,
     user?.jwt_token as string,
