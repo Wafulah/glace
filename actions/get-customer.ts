@@ -6,7 +6,7 @@ export const getCustomer = async (
   store_id: string,
   jwt_token: string,
   customer_id: string
-): Promise<Customer> => {
+): Promise<Customer | null> => {
   if (!store_id || !jwt_token || !customer_id) {
     throw new Error("Store ID and user jwt token are required");
   }
@@ -30,6 +30,6 @@ export const getCustomer = async (
     return customer;
   } catch (error) {
     console.error("[GET_CUSTOMER_ERROR]", error);
-    return [];
+    return null;
   }
 };

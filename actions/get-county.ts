@@ -6,7 +6,7 @@ export const getCounty = async (
   store_id: string,
   jwt_token: string,
   county_id: string
-): Promise<County> => {
+): Promise<County | null> => {
   if (!store_id || !jwt_token || !county_id) {
     throw new Error("Store ID, county_id and user jwt token are required");
   }
@@ -30,6 +30,6 @@ export const getCounty = async (
     return county;
   } catch (error) {
     console.error("[GET_COUNTY_ERROR]", error);
-    return [];
+    return null;
   }
 };

@@ -6,7 +6,7 @@ export const getCategory = async (
   store_id: string,
   jwt_token: string,
   category_id: string
-): Promise<Category> => {
+): Promise<Category | null> => {
   if (!store_id || !jwt_token) {
     throw new Error("Store ID and user jwt token are required");
   }
@@ -30,6 +30,6 @@ export const getCategory = async (
     return category;
   } catch (error) {
     console.error("[GET_CATEGORY_ERROR]", error);
-    return [];
+    return null;
   }
 };
