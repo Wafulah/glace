@@ -30,6 +30,6 @@ export const getCounty = async (
     return county;
   } catch (error) {
     console.error("[GET_COUNTY_ERROR]", error);
-    throw error;
+    return [];
   }
 };

@@ -30,6 +30,6 @@ export const getCustomer = async (
     return customer;
   } catch (error) {
     console.error("[GET_CUSTOMER_ERROR]", error);
-    throw error;
+    return [];
   }
 };

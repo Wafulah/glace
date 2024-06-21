@@ -30,6 +30,6 @@ export const getOrder = async (
     return order;
   } catch (error) {
     console.error("[GET_ORDER_ERROR]", error);
-    throw error;
+    return [];
   }
 };

@@ -30,6 +30,6 @@ export const getCategory = async (
     return category;
   } catch (error) {
     console.error("[GET_CATEGORY_ERROR]", error);
-    throw error;
+    return [];
   }
 };

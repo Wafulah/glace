@@ -30,6 +30,6 @@ export const getProduct = async (
     return product;
   } catch (error) {
     console.error("[GET_PRODUCT_ERROR]", error);
-    throw error;
+    return [];
   }
 };
