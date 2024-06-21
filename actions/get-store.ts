@@ -3,9 +3,9 @@ import { Store } from "@/types";
 
 const API_URL = `${process.env.NEXT_PUBLIC_API_ALL_URL}/stores`;
 
-export const getStore = async (storeid: string, session_token: string): Promise<Store> => {
-    if (!session_token) {
-        throw new Error('User session token is required');
+export const getStore = async (storeid: string, jwt_token: string): Promise<Store> => {
+    if (!jwt_token) {
+        throw new Error('User jwt token is required');
     }
 
     const storeUrl = `${API_URL}/${storeid}`;
@@ -14,7 +14,7 @@ export const getStore = async (storeid: string, session_token: string): Promise<
         const response = await fetch(storeUrl, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${session_token}`,
+                'Authorization': `Bearer ${jwt_token}`,
                 'Content-Type': 'application/json'
             }
         });

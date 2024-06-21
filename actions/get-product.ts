@@ -4,11 +4,11 @@ const API_URL = process.env.NEXT_PUBLIC_API_ALL_URL;
 
 export const getProduct = async (
   store_id: string,
-  session_token: string,
+  jwt_token: string,
   product_id: string
 ): Promise<Product> => {
-  if (!store_id || !session_token || !product_id) {
-    throw new Error("Store ID and user session token are required");
+  if (!store_id || !jwt_token || !product_id) {
+    throw new Error("Store ID and user jwt token are required");
   }
 
   const url = `${API_URL}/${store_id}/products/${product_id}`;
@@ -17,7 +17,7 @@ export const getProduct = async (
     const response = await fetch(url, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${session_token}`,
+        Authorization: `Bearer ${jwt_token}`,
         "Content-Type": "application/json",
       },
     });
