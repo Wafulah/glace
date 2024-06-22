@@ -99,6 +99,7 @@ export const StoreModal: React.FC<StoreModalProps> = ({
 
   const handleDone = () => {
     onDone(orderItems);
+    console.log(orderItems);
     closeModal();
   };
 

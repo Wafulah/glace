@@ -195,6 +195,8 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   const onProducts = async () => {
     setIsModalOpen(true);
   };
+  
+
   return (
     <>
       <AlertModal
@@ -379,9 +381,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
                 </FormItem>
               )}
             />
-            <Button onClick={() => setIsModalOpen(true)}>
-              Select Products
-            </Button>
+           
             {isModalOpen && (
               <StoreModal
                 products={products}
