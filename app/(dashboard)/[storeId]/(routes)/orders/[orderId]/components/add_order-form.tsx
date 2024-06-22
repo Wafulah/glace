@@ -95,7 +95,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   const params = useParams();
   const router = useRouter();
   const origin = useOrigin();
-  const { register, setValue, watch } = useForm();
+  const { register, setValue, getValues } = useForm();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -198,14 +198,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   };
   const showProducts = async () => {
     // Assuming orderItems are managed elsewhere and accessible in the component
-    const data = {
-      ...form.getValues(), // Get current form values using react-hook-form
-      orderItems: orderItems.map((item) => ({
-        product: { id: item.product.id }, // Assuming productId is correct field name
-        quantity: item.quantity,
-        price: item.price,
-      })),
-    };
+    const data = getValues()
 
     console.log("Data for debugging:", data);
   };
