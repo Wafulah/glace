@@ -1,4 +1,4 @@
-import { format,parseISO } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { Metadata } from "next";
 
 import { currentUser } from "@/lib/auth";
@@ -17,10 +17,7 @@ export const metadata: Metadata = {
 const ProductsPage = async ({ params }: { params: { storeId: string } }) => {
   const user = await currentUser();
 
-  const products = await getProducts(
-    params.storeId,
-    user?.jwt_token as string
-  );
+  const products = await getProducts(params.storeId, user?.jwt_token as string);
 
   const formattedProducts: ProductColumn[] = products.map((item) => ({
     id: item.id,
@@ -30,7 +27,7 @@ const ProductsPage = async ({ params }: { params: { storeId: string } }) => {
     isArchived: item.isArchived,
     price: item.price,
     category: item.category.name,
-    createdAt: format(parseISO(item.created_at), "MMMM do, yyyy"),
+    createdAt: format(parseISO(item.createdAt), "MMMM do, yyyy"),
   }));
 
   return (

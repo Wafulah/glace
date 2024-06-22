@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { format,parseIso } from "date-fns";
+import { format,parseISO } from "date-fns";
 import { redirect } from 'next/navigation';
 import { currentUser } from "@/lib/auth";
 
@@ -26,7 +26,7 @@ const CountiesPage = async ({
   const formattedCounties: CountyColumn[] = counties.map((item) => ({
     id: item.id,
     name: item.name,
-    createdAt: format(parseISO(item.created_at), "MMMM do, yyyy"),
+    createdAt: format(parseISO(item.createdAt), "MMMM do, yyyy"),
   }));
 
   return (

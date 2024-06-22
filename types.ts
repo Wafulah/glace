@@ -8,8 +8,8 @@ export interface Product {
   rating: number; // Added based on the Product model
   description: string;
   isArchived: boolean; // Boolean to indicate if archived
-  createdAt: Date; // ISO string format date
-  updatedAt: Date; // ISO string format date
+  createdAt: string; // ISO string format date
+  updatedAt: string; // ISO string format date
   images: Image[];
 }
 
@@ -21,8 +21,8 @@ export interface Store {
   latitude?: number; // Nullable fields for latitude
   longitude?: number; // Nullable fields for longitude
   paybill?: string; // Paybill can be null or blank
-  createdAt: Date; // ISO string format date
-  updatedAt: Date; // ISO string format date
+  createdAt: string; // ISO string format date
+  updatedAt: string; // ISO string format date
   images: Image[];
   products: Product[];
   categories: Category[];
@@ -57,9 +57,9 @@ export interface Order {
   phone: string;
   address: string;
   county: County; // County reference
-  createdAt: Date; // ISO string format date
-  updatedAt: Date; // ISO string format date
-  deliveryDate: Date; // ISO string format date
+  createdAt: string; // ISO string format date
+  updatedAt: string; // ISO string format date
+  deliveryDate: string; // ISO string format date
   orderItems: OrderItem[];
 }
 
@@ -104,8 +104,8 @@ export interface County {
   store: Store; // Store reference
   name: string;
   description?: string;
-  createdAt: Date; // ISO string format date
-  updatedAt: Date; // ISO string format date
+  createdAt: string; // ISO string format date
+  updatedAt: string; // ISO string format date
 }
 
 //defaults
@@ -125,7 +125,7 @@ export const defaultImage: Image = {
   id: "",
   url: "",
   createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString()
+  updatedAt: new Date().toISOString(),
 };
 
 // Default Category
@@ -135,8 +135,8 @@ export const defaultCategory: Category = {
   name: "",
   imageUrl: "",
   description: "",
-  createdAt: new Date(),
-  updatedAt: new Date()
+  createdAt: "",
+  updatedAt: ""
 };
 
 // Default Product
@@ -150,8 +150,8 @@ export const defaultProduct: Product = {
   rating: 0,
   description: "",
   isArchived: false,
-  createdAt: new Date(),
-  updatedAt: new Date(),
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
   images: [defaultImage]
 };
 
@@ -164,8 +164,8 @@ export const defaultStore: Store = {
   latitude: 0,
   longitude: 0,
   paybill: "",
-  createdAt: new Date(),
-  updatedAt: new Date(),
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
   images: [defaultImage],
   products: [defaultProduct],
   categories: [defaultCategory],
@@ -178,8 +178,8 @@ export const defaultCounty: County = {
   store: defaultStore,
   name: "",
   description: "",
-  createdAt: new Date(),
-  updatedAt: new Date()
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
 };
 
 // Default Customer
@@ -212,9 +212,9 @@ export const defaultOrder: Order = {
   phone: "",
   address: "",
   county: defaultCounty,
-  createdAt: new Date(),
-  updatedAt: new Date(),
-  deliveryDate: new Date(),
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+  deliveryDate: new Date().toISOString(),
   orderItems: [defaultOrderItem]
 };
 

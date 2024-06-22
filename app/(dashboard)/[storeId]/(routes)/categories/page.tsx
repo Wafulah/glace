@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { format, parseISO  } from "date-fns";
+import { format,parseISO } from "date-fns";
 
 import { getCategories } from "@/actions/get-categories";
 import { CategoryColumn } from "./components/columns";
@@ -12,9 +12,6 @@ export const metadata: Metadata = {
 
 const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
   const user = await currentUser();
-  const categories = aw
-const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
-  const user = await currentUser();
   const categories = await getCategories(
     params.storeId,
     user?.jwt_token as string
@@ -23,7 +20,7 @@ const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
   const formattedCategories: CategoryColumn[] = categories.map((item) => ({
     id: item.id,
     name: item.name,
-    createdAt: format(parseISO(item.created_at), "MMMM do, yyyy"),
+    createdAt: format(parseISO(item.createdAt), "MMMM do, yyyy"),
   }));
 
   return (
