@@ -54,11 +54,10 @@ import { StoreModal } from "./order-items-modal";
 import ImageUpload from "@/components/ui/image-upload";
 
 const OrderItemSchema = z.object({
-  productId: z.string(),
-  name: z.string(),
+  product: z.string(),
   quantity: z.number().int(),
   price: z.string(),
-  totalPrice: z.number(),
+  
 });
 
 const formSchema = z.object({
@@ -96,6 +95,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   const params = useParams();
   const router = useRouter();
   const origin = useOrigin();
+  const { register, setValue, watch } = useForm();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -125,18 +125,17 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     },
   });
 
-  // useEffect to update formValues when orderItems change
-  React.useEffect(() => {
-    // Update formValues whenever orderItems change
-    setFormValues((prevFormValues) => ({
-      ...prevFormValues,
-      orderItems: orderItems.map((item) => ({
-        product: { id: item.productId }, // Assuming productId is the correct property
+   // useEffect to update form state when orderItems change
+   React.useEffect(() => {
+    setValue(
+      'orderItems',
+      orderItems.map((item) => ({
+        product: { id: item.product.id },
         quantity: item.quantity,
         price: item.price,
-      })),
-    }));
-  }, [orderItems]);
+      }))
+    );
+  }, [orderItems, setValue]);
 
   const onSubmit = async (values: OrderFormValues) => {
     try {
