@@ -56,7 +56,7 @@ import ImageUpload from "@/components/ui/image-upload";
 const OrderItemSchema = z.object({
   product: z.string(),
   quantity: z.number().int(),
-  price: z.string(),
+  price: z.number(),
 });
 
 const formSchema = z.object({
@@ -114,11 +114,9 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     defaultValues: {
       ...initialData,
       orderItems: initialData.orderItems.map((item) => ({
-        productid: item.id,
-        name: item.product.name,
+        product: item.product.id,
         quantity: item.quantity,
-        price: item.product.price,
-        totalPrice: item.price,
+        price: item.price,
       })),
     },
   });
@@ -128,7 +126,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     form.setValue(
       "orderItems",
       orderItems.map((item) => ({
-        product: { id: item.product.id },
+        product: item.product.id,
         quantity: item.quantity,
         price: item.price,
       }))
