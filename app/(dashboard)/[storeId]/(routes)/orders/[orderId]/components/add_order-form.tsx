@@ -174,19 +174,19 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_ALL_URL}/stores/${params.storeId}/`,
-        {
-          headers: {
-            Authorization: `Bearer ${jwt_token}`,
-          },
-        }
-      );
-      router.refresh();
-      router.push("/");
-      toast.success("Store deleted.");
+      // await axios.delete(
+      //   `${process.env.NEXT_PUBLIC_API_ALL_URL}/stores/${params.storeId}/`,
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${jwt_token}`,
+      //     },
+      //   }
+      // );
+      // router.refresh();
+      // router.push("/");
+      toast.success("Order deleted.");
     } catch (error: any) {
-      toast.error("Make sure you removed all products and categories first.");
+      toast.error("An error occured.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -205,14 +205,14 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
       />
       <div className="flex items-center justify-between">
         <Heading title="Orders" description="Manage Orders" />
-        <Button
+        {/* <Button
           disabled={loading}
           variant="destructive"
           size="sm"
           onClick={() => setOpen(true)}
         >
           <Trash className="h-4 w-4" />
-        </Button>
+        </Button> */}
       </div>
       <Separator />
       <Form {...form}>
@@ -379,7 +379,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
                 </FormItem>
               )}
             />
-            <Button onClick={() => setIsModalOpen(true)}>
+            <Button variant="outline" onClick={() => setIsModalOpen(true)}>
               Select Products
             </Button>
             {isModalOpen && (
