@@ -27,10 +27,10 @@ import { AlertModal } from "@/components/modals/alert-modal";
 import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
-  firstName: z.string().min(2),
-  lastName: z.string().min(2),
+  first_name: z.string().min(2),
+  last_name: z.string().min(2),
   email: z.string().min(2),
-  phoneNumber: z.string().min(2),
+  phone_number: z.string().min(2),
 });
 
 type CustomerFormValues = z.infer<typeof formSchema>;
@@ -58,10 +58,10 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
   const form = useForm<CustomerFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
-      firstName: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       email: "",
-      phoneNumber: "",
+      phone_number: "",
     },
   });
 
@@ -154,7 +154,7 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
           <div className="md:grid md:grid-cols-3 gap-8">
             <FormField
               control={form.control}
-              name="firstName"
+              name="first_name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Fisrt Name</FormLabel>
@@ -171,7 +171,7 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="lastName"
+              name="last_name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Last Name</FormLabel>
@@ -201,7 +201,7 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="phoneNumber"
+              name="phone_number"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>phone Number</FormLabel>
