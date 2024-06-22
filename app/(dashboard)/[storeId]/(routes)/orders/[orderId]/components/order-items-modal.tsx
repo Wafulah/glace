@@ -191,7 +191,7 @@ export const StoreModal: React.FC<StoreModalProps> = ({
                             onChange={(e) => {
                               const value = e.target.valueAsNumber;
                               field.onChange(value);
-                              const price = form.getValues("price");
+                              const price = parseFloat(form.getValues("price"));
                               if (!isNaN(value) && !isNaN(price)) {
                                 form.setValue("totalPrice", value * price);
                               }
