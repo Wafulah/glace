@@ -138,7 +138,9 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
       setLoading(true);
       const data = values;
       console.log(initialData);
-      if (initialData) {
+      const isInitialDataEmpty = !initialData || Object.keys(initialData).length === 0 || !initialData.id;
+
+      if (isInitialDataEmpty) {
         await axios.patch(
           `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/${params.orderId}/`,
           data,
