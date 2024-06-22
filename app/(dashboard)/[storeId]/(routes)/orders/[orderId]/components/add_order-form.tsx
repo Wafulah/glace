@@ -378,9 +378,15 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
                 </FormItem>
               )}
             />
-            <Button className="bg-green-500 rounded-lg" onClick={onProducts}>
-              Add Products
-            </Button>
+            <Button
+  className="bg-green-500 rounded-lg"
+  onClick={(e) => {
+    e.preventDefault(); // Prevent form submission
+    onProducts(); // Execute your function to add products
+  }}
+>
+  Add Products
+</Button>
           </div>
 
           <Button disabled={loading} className="ml-auto" type="submit">
