@@ -19,9 +19,9 @@ const CustomersPage = async ({ params }: { params: { storeId: string } }) => {
 
   const formattedCustomers: CustomerColumn[] = customers.map((item) => ({
     id: item.id,
-    firstName: item.firstName,
-    lastName: item.lastName,
-    phoneNumber: item.phoneNumber,
+    firstName: item.first_name,
+    lastName: item.last_name,
+    phoneNumber: item.phone_number,
     email: item.email,
   }));
 

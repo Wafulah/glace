@@ -6,10 +6,10 @@ import { CellAction } from "./cell-action";
 
 export type CustomerColumn = {
   id: string;
-  firstName?: string;
-  lastName?: string;
+  first_name?: string;
+  last_name?: string;
   email?: string;
-  phoneNumber?: string;
+  phone_number?: string;
 };
 
 export const columns: ColumnDef<CustomerColumn>[] = [

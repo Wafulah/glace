@@ -244,7 +244,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
                     <SelectContent>
                       {customers.map((customer) => (
                         <SelectItem key={customer.id} value={customer.id}>
-                          {customer.firstName}
+                          {customer.first_name}
                         </SelectItem>
                       ))}
                     </SelectContent>

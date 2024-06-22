@@ -26,7 +26,7 @@ export const CustomersClient: React.FC<CustomersClientProps> = ({
     <>
       <div className="flex items-center justify-between">
         <Heading title={`Customers (${data.length})`} description="Manage customers for your store" />
-        <Button onClick={() => router.push(`/${params.storeId}/customers/new`)}>
+        <Button onClick={() => router.push(`/${params.storeId}/customer/new`)}>
           <Plus className="mr-2 h-4 w-4" /> Add New
         </Button>
       </div>

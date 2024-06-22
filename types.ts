@@ -41,11 +41,11 @@ export interface Image {
 export interface Customer {
   id: string;
   store: Store; // Store reference
-  firstName?: string;
-  lastName?: string;
+  first_name?: string;
+  last_name?: string;
   email?: string;
   image?: string;
-  phoneNumber?: string;
+  phone_number?: string;
 }
 
 export interface Order {
@@ -186,11 +186,11 @@ export const defaultCounty: County = {
 export const defaultCustomer: Customer = {
   id: "",
   store: defaultStore,
-  firstName: "",
-  lastName: "",
+  first_name: "",
+  last_name: "",
   email: "",
   image: "",
-  phoneNumber: "",
+  phone_number: "",
 };
 
 // Default OrderItem
