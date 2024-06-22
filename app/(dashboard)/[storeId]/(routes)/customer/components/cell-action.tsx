@@ -3,22 +3,22 @@
 import axios from "axios";
 import { useState } from "react";
 import {
-  LuCopy as Copy ,
-  LuPencil as Edit ,
-  LuMoreHorizontal as MoreHorizontal ,
-  LuTrash2 as Trash ,
+  LuCopy as Copy,
+  LuPencil as Edit,
+  LuMoreHorizontal as MoreHorizontal,
+  LuTrash2 as Trash,
 } from "react-icons/lu";
 import { toast } from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
 import { Button } from "@/components/ui/button";
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuLabel, 
-  DropdownMenuTrigger
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useCategoryModal } from "@/hooks/use-category-modal";
 import { AlertModal } from "@/components/modals/alert-modal";
@@ -29,9 +29,7 @@ interface CellActionProps {
   data: CustomerColumn;
 }
 
-export const CellAction: React.FC<CellActionProps> = ({
-  data,
-}) => {
+export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const router = useRouter();
   const params = useParams();
   const [open, setOpen] = useState(false);
@@ -41,16 +39,20 @@ export const CellAction: React.FC<CellActionProps> = ({
   const onConfirm = async () => {
     try {
       setLoading(true);
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/customers/${data.id}/`,
+      await axios.delete(
+        `${process.env.NEXT_PUBLIC_API_ALL_URL}/api/${params.storeId}/customers/${data.id}/`,
         {
           headers: {
             Authorization: `Bearer ${user?.jwt_token}`,
           },
-        });
-      toast.success('Category deleted.');
+        }
+      );
+      toast.success("Category deleted.");
       router.refresh();
     } catch (error) {
-      toast.error('Make sure you removed all products using this category first.');
+      toast.error(
+        "Make sure you removed all products using this category first."
+      );
     } finally {
       setOpen(false);
       setLoading(false);
@@ -59,13 +61,13 @@ export const CellAction: React.FC<CellActionProps> = ({
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success('Category ID copied to clipboard.');
-  }
+    toast.success("Category ID copied to clipboard.");
+  };
 
   return (
     <>
-      <AlertModal 
-        isOpen={open} 
+      <AlertModal
+        isOpen={open}
         onClose={() => setOpen(false)}
         onConfirm={onConfirm}
         loading={loading}
@@ -79,19 +81,17 @@ export const CellAction: React.FC<CellActionProps> = ({
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
-          <DropdownMenuItem
-            onClick={() => onCopy(data.id)}
-          >
+          <DropdownMenuItem onClick={() => onCopy(data.id)}>
             <Copy className="mr-2 h-4 w-4" /> Copy Id
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={() => router.push(`/${params.storeId}/categories/${data.id}`)}
+            onClick={() =>
+              router.push(`/${params.storeId}/customer/${data.id}`)
+            }
           >
             <Edit className="mr-2 h-4 w-4" /> Update
           </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => setOpen(true)}
-          >
+          <DropdownMenuItem onClick={() => setOpen(true)}>
             <Trash className="mr-2 h-4 w-4" /> Delete
           </DropdownMenuItem>
         </DropdownMenuContent>
