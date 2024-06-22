@@ -9,7 +9,7 @@ import { toast } from "react-hot-toast";
 import { useState } from "react";
 import type { Product, OrderItem } from "@/types";
 
-import Modal from "@/components/modals/modal";
+import Modal from "@/components/ui/modal";
 import { Input } from "@/components/ui/input";
 import {
   Form,
