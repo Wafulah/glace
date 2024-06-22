@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format,parseISO } from "date-fns";
 import { Metadata } from "next";
 import { currentUser } from "@/lib/auth";
 
@@ -33,7 +33,7 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
     ),
     isPaid: item.isPaid,
     isDelivered: item.isDelivered,
-    createdAt: format(item.createdAt, "MMMM do, yyyy"),
+    createdAt: format(parseISO(item.created_at), "MMMM do, yyyy"),
   }));
 
   return (

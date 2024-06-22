@@ -95,8 +95,8 @@ export interface Category {
   name: string;
   imageUrl: string;
   description?: string;
-  createdAt: Date; // ISO string format date
-  updatedAt: Date; // ISO string format date
+  createdAt: string; // ISO string format date
+  updatedAt: string; // ISO string format date
 }
 
 export interface County {
