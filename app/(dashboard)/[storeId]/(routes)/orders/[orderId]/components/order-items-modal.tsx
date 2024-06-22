@@ -33,7 +33,7 @@ const formSchema = z.object({
   productId: z.string().min(1),
   price: z.string().min(1),
   totalPrice: z.number(),
-  quantity: z.number(),
+  quantity: z.string(),
 });
 
 interface StoreModalProps {
