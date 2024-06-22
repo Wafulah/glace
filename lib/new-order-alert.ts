@@ -50,8 +50,8 @@ interface Order {
     isDelivered: boolean;
     phone: string;
     address: string;
-    createdAt: Date;
-    updatedAt: Date;
+    created_at: Date;
+    updated_at: Date;
 }
 
 export const sendOrderAlert = async (email: string, order: Order) => {
@@ -100,7 +100,7 @@ export const sendOrderAlert = async (email: string, order: Order) => {
             your premier online destination for high-quality fashion.
           </p>
           <p style="font-family: serif; font-size: 16px; color: #333;">
-            You received your order on ${order.createdAt.toDateString()}. Kindly schedule these products for delivery.
+            You received your order on ${order.created_at.toDateString()}. Kindly schedule these products for delivery.
           </p>
           <ul style="font-family: serif; font-size: 16px; color: #333; list-style-type: none; padding: 0;">
             ${orderItemsHtml}

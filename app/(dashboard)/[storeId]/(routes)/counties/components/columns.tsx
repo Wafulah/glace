@@ -7,7 +7,7 @@ import { CellAction } from "./cell-action"
 export type CountyColumn = {
   id: string
   name: string;
-  createdAt: string;
+  created_at: string;
 }
 
 export const columns: ColumnDef<CountyColumn>[] = [
@@ -16,7 +16,7 @@ export const columns: ColumnDef<CountyColumn>[] = [
     header: "Name",
   },
     {
-    accessorKey: "createdAt",
+    accessorKey: "created_at",
     header: "Date",
   },
   {

@@ -8,8 +8,8 @@ export interface Product {
   rating: number; // Added based on the Product model
   description: string;
   isArchived: boolean; // Boolean to indicate if archived
-  createdAt: string; // ISO string format date
-  updatedAt: string; // ISO string format date
+  created_at: Date; // ISO string format date
+  updated_at: Date; // ISO string format date
   images: Image[];
 }
 
@@ -21,8 +21,8 @@ export interface Store {
   latitude?: number; // Nullable fields for latitude
   longitude?: number; // Nullable fields for longitude
   paybill?: string; // Paybill can be null or blank
-  createdAt: string; // ISO string format date
-  updatedAt: string; // ISO string format date
+  created_at: Date; // ISO string format date
+  updated_at: Date; // ISO string format date
   images: Image[];
   products: Product[];
   categories: Category[];
@@ -34,8 +34,8 @@ export interface Image {
   product?: Product; // Nullable Product reference
   store?: Store; // Nullable Store reference
   url: string;
-  createdAt: string; // ISO string format date
-  updatedAt: string; // ISO string format date
+  created_at: Date; // ISO string format date
+  updated_at: Date; // ISO string format date
 }
 
 export interface Customer {
@@ -57,9 +57,9 @@ export interface Order {
   phone: string;
   address: string;
   county: County; // County reference
-  createdAt: string; // ISO string format date
-  updatedAt: string; // ISO string format date
-  deliveryDate: string; // ISO string format date
+  created_at: Date; // ISO string format date
+  updated_at: Date; // ISO string format date
+  deliveryDate: Date; // ISO string format date
   orderItems: OrderItem[];
 }
 
@@ -95,8 +95,8 @@ export interface Category {
   name: string;
   imageUrl: string;
   description?: string;
-  createdAt: string; // ISO string format date
-  updatedAt: string; // ISO string format date
+  created_at: Date; // ISO string format date
+  updated_at: Date; // ISO string format date
 }
 
 export interface County {
@@ -104,8 +104,8 @@ export interface County {
   store: Store; // Store reference
   name: string;
   description?: string;
-  createdAt: string; // ISO string format date
-  updatedAt: string; // ISO string format date
+  created_at: Date; // ISO string format date
+  updated_at: Date; // ISO string format date
 }
 
 //defaults
@@ -117,15 +117,15 @@ export const defaultUser: User = {
   email: "",
   image: "",
   phoneNumber: "",
-  session_token: ""
+  session_token: "",
 };
 
 // Default Image
 export const defaultImage: Image = {
   id: "",
   url: "",
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
+  created_at: new Date(),
+  updated_at: new Date(),
 };
 
 // Default Category
@@ -135,8 +135,8 @@ export const defaultCategory: Category = {
   name: "",
   imageUrl: "",
   description: "",
-  createdAt: "",
-  updatedAt: ""
+  created_at: new Date(),
+  updated_at: new Date(),
 };
 
 // Default Product
@@ -150,9 +150,9 @@ export const defaultProduct: Product = {
   rating: 0,
   description: "",
   isArchived: false,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
-  images: [defaultImage]
+  created_at: new Date(),
+  updated_at: new Date(),
+  images: [defaultImage],
 };
 
 // Default Store
@@ -164,12 +164,12 @@ export const defaultStore: Store = {
   latitude: 0,
   longitude: 0,
   paybill: "",
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
+  created_at: new Date(),
+  updated_at: new Date(),
   images: [defaultImage],
   products: [defaultProduct],
   categories: [defaultCategory],
-  counties: []
+  counties: [],
 };
 
 // Default County
@@ -178,8 +178,8 @@ export const defaultCounty: County = {
   store: defaultStore,
   name: "",
   description: "",
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
+  created_at: new Date(),
+  updated_at: new Date(),
 };
 
 // Default Customer
@@ -190,7 +190,7 @@ export const defaultCustomer: Customer = {
   lastName: "",
   email: "",
   image: "",
-  phoneNumber: ""
+  phoneNumber: "",
 };
 
 // Default OrderItem
@@ -199,7 +199,7 @@ export const defaultOrderItem: OrderItem = {
   order: null as any, // Placeholder for Order reference
   product: defaultProduct,
   quantity: 1,
-  price: 0
+  price: 0,
 };
 
 // Default Order
@@ -212,10 +212,10 @@ export const defaultOrder: Order = {
   phone: "",
   address: "",
   county: defaultCounty,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
-  deliveryDate: new Date().toISOString(),
-  orderItems: [defaultOrderItem]
+  created_at: new Date(),
+  updated_at: new Date(),
+  deliveryDate: new Date(),
+  orderItems: [defaultOrderItem],
 };
 
 // Default UserProfile
@@ -224,5 +224,5 @@ export const defaultUserProfile: UserProfile = {
   email: "",
   phoneNumber: "",
   firstName: "",
-  lastName: ""
+  lastName: "",
 };

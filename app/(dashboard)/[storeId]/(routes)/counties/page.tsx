@@ -26,7 +26,7 @@ const CountiesPage = async ({
   const formattedCounties: CountyColumn[] = counties.map((item) => ({
     id: item.id,
     name: item.name,
-    createdAt: format(parseISO(item.createdAt), "MMMM do, yyyy"),
+    created_at: format(item.created_at, "MMMM do, yyyy"),
   }));
 
   return (

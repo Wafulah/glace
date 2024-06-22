@@ -11,7 +11,7 @@ export type ProductColumn = {
   quantity: number;
   rating: number;
   category: string;
-  createdAt: string;
+  created_at: string;
   isArchived: boolean;
 };
 
@@ -33,7 +33,7 @@ export const columns: ColumnDef<ProductColumn>[] = [
     header: "Category",
   },
   {
-    accessorKey: "createdAt",
+    accessorKey: "created_at",
     header: "Date",
   },
   {

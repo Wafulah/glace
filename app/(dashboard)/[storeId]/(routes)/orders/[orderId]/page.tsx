@@ -42,8 +42,8 @@ const ProductPage = async ({
     isPaid: order?.isPaid ?? false,
     isDelivered: order?.isDelivered ?? false,
     deliveryDate: order?.deliveryDate,
-    createdAt: order
-      ? format(new Date(order.createdAt), "MMMM do, yyyy")
+    created_at: order
+      ? format(new Date(order.created_at), "MMMM do, yyyy")
       : "N/A",
     products: order
       ? order.orderItems.map((orderItem) => ({

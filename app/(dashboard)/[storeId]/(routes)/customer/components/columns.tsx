@@ -30,7 +30,7 @@ export const columns: ColumnDef<CustomerColumn>[] = [
     header: "Phone Number",
   },
   {
-    accessorKey: "createdAt",
+    accessorKey: "created_at",
     header: "Date",
   },
   {

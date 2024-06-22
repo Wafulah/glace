@@ -13,7 +13,7 @@ export type OrderColumn = {
   isDelivered: boolean;
   totalPrice: string;
   products: string;
-  createdAt: string;
+  created_at: string;
 };
 
 export const columns: ColumnDef<OrderColumn>[] = [
@@ -38,7 +38,7 @@ export const columns: ColumnDef<OrderColumn>[] = [
     header: "Delivered",
   },
   {
-    accessorKey: "createdAt",
+    accessorKey: "created_at",
     header: "Date",
   },
   {

@@ -18,7 +18,7 @@ export const OrderClient: React.FC<OrderClientProps> = ({ data }) => {
             address: data.address,
             isPaid: data.isPaid,
             isDelivered: data.isDelivered,
-            createdAt: data.createdAt,
+            created_at: data.created_at,
         },
     ];
 
