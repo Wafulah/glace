@@ -125,17 +125,23 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     },
   });
 
+  // useEffect to update formValues when orderItems change
+  React.useEffect(() => {
+    // Update formValues whenever orderItems change
+    setFormValues((prevFormValues) => ({
+      ...prevFormValues,
+      orderItems: orderItems.map((item) => ({
+        product: { id: item.productId }, // Assuming productId is the correct property
+        quantity: item.quantity,
+        price: item.price,
+      })),
+    }));
+  }, [orderItems]);
+
   const onSubmit = async (values: OrderFormValues) => {
     try {
       setLoading(true);
-      const data = {
-        ...values,
-        orderItems: orderItems.map((item) => ({
-          product: { id: item.product.id },
-          quantity: item.quantity,
-          price: item.price,
-        })),
-      };
+      const data = values;
       console.log("data", data);
       if (initialData) {
         await axios.patch(
