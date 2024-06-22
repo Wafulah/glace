@@ -109,7 +109,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
 
   const handleDone = (items: OrderItem[]) => {
-    setOrderItems(items);
+    setOrderItems(...items);
     console.log("page",orderItems);
     setIsModalOpen(false);
   };
@@ -142,6 +142,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
           price: item.price,
         })),
       };
+      console.log("data",data);
       if (initialData) {
         await axios.patch(
           `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/${params.orderId}/`,
