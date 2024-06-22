@@ -17,9 +17,7 @@ const CountiesPage = async ({
   params: { storeId: string }
 }) => {
   
-  if (params.storeId !== process.env.NEXT_PUBLIC_ADMIN) {
-    redirect('/auth/login');
-  }
+
   const user = await currentUser(); 
   const counties = await getCounties(params.storeId,user?.jwt_token as string);
 
