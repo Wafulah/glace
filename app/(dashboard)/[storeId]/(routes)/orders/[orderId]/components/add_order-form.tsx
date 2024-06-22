@@ -57,7 +57,6 @@ const OrderItemSchema = z.object({
   product: z.string(),
   quantity: z.number().int(),
   price: z.string(),
-  
 });
 
 const formSchema = z.object({
@@ -95,7 +94,6 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   const params = useParams();
   const router = useRouter();
   const origin = useOrigin();
-  const { register, setValue, getValues } = useForm();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -125,17 +123,17 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     },
   });
 
-   // useEffect to update form state when orderItems change
-   React.useEffect(() => {
-    setValue(
-      'orderItems',
+  // useEffect to update form state when orderItems change
+  React.useEffect(() => {
+    form.setValue(
+      "orderItems",
       orderItems.map((item) => ({
         product: { id: item.product.id },
         quantity: item.quantity,
         price: item.price,
       }))
     );
-  }, [orderItems, setValue]);
+  }, [orderItems, form]);
 
   const onSubmit = async (values: OrderFormValues) => {
     try {
@@ -198,7 +196,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   };
   const showProducts = async () => {
     // Assuming orderItems are managed elsewhere and accessible in the component
-    const data = getValues()
+    const data = form.getValues();
 
     console.log("Data for debugging:", data);
   };
