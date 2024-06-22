@@ -102,7 +102,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
 
   const handleDone = (items: OrderItem[]) => {
     setOrderItems([...items]);
-    console.log("page", orderItems);
+    
     setIsModalOpen(false);
   };
   const closeModal = () => {
@@ -137,7 +137,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     try {
       setLoading(true);
       const data = values;
-      console.log("data", data);
+      console.log(initialData);
       if (initialData) {
         await axios.patch(
           `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/${params.orderId}/`,
@@ -191,12 +191,6 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   };
   const onProducts = async () => {
     setIsModalOpen(true);
-  };
-  const showProducts = async () => {
-    // Assuming orderItems are managed elsewhere and accessible in the component
-    const data = form.getValues();
-
-    console.log("Data for debugging:", data);
   };
 
   return (
@@ -383,7 +377,6 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
                 </FormItem>
               )}
             />
-            <Button onClick={showProducts}>show prdo</Button>
             <Button className="bg-green-500 rounded-lg" onClick={onProducts}>
               Add Products
             </Button>
