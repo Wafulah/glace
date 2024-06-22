@@ -137,12 +137,10 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     try {
       setLoading(true);
       const data = values;
-      console.log(initialData);
-      const isInitialDataEmpty = !initialData || Object.keys(initialData).length === 0 || !initialData.id;
-
-      if (isInitialDataEmpty) {
-        await axios.patch(
-          `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/${params.orderId}/`,
+      
+      if (initialData.id === "" || !initialData) {
+        await axios.post(
+          `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/`,
           data,
           {
             headers: {
@@ -151,8 +149,9 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
           }
         );
       } else {
-        await axios.post(
-          `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/`,
+        
+        await axios.patch(
+          `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/${params.orderId}/`,
           data,
           {
             headers: {
