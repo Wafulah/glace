@@ -104,7 +104,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
 
   const handleDone = (items: OrderItem[]) => {
     setOrderItems([...items]);
-    console.log("page", orderItems);
+    console.log("page",orderItems);
     setIsModalOpen(false);
   };
   const closeModal = () => {
@@ -136,7 +136,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
           price: item.price,
         })),
       };
-      console.log("data", data);
+      console.log("data",data);
       if (initialData) {
         await axios.patch(
           `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/${params.orderId}/`,
@@ -191,9 +191,6 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   const onProducts = async () => {
     setIsModalOpen(true);
   };
-
-  // Assuming this function is defined within the AddOrderForm component
-
   const showProducts = async () => {
     // Assuming orderItems are managed elsewhere and accessible in the component
     const data = {
@@ -392,23 +389,24 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
                 </FormItem>
               )}
             />
-            <Button className="bg-green-500 rounded-lg" onClick={onProducts}>
+           <Button onclick={showProducts}>show prdo</Button>
+                     <Button className="bg-green-500 rounded-lg" onClick={onProducts}>
               Add Products
             </Button>
           </div>
 
-          <Button disabled={loading} className="ml-auto" onClick={showProducts}>
+          <Button disabled={loading} className="ml-auto" type="submit">
             Save changes
           </Button>
         </form>
       </Form>
       {isModalOpen && (
-        <StoreModal
-          products={products}
-          initialData={initialData.orderItems}
-          onDone={handleDone}
-        />
-      )}
+              <StoreModal
+                products={products}
+                initialData={initialData.orderItems}
+                onDone={handleDone}
+              />
+            )}
       <Separator />
       <ApiAlert
         title="NEXT_PUBLIC_API_URL"
