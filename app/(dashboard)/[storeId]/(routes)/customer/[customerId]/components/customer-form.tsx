@@ -50,9 +50,9 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit category" : "Create category";
-  const description = initialData ? "Edit a category." : "Add a new category";
-  const toastMessage = initialData ? "Category updated." : "Category created.";
+  const title = initialData ? "Edit customer" : "Create customer";
+  const description = initialData ? "Edit a customer." : "Add a new customer";
+  const toastMessage = initialData ? "customer updated." : "customer created.";
   const action = initialData ? "Save changes" : "Create";
 
   const form = useForm<CustomerFormValues>({
@@ -90,7 +90,7 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
         );
       }
       router.refresh();
-      router.push(`/${params.storeId}/customers`);
+      router.push(`/${params.storeId}/customer`);
       toast.success(toastMessage);
     } catch (error: any) {
       toast.error("Something went wrong.");
@@ -112,11 +112,11 @@ export const CustomerForm: React.FC<CustomerFormProps> = ({
         }
       );
       router.refresh();
-      router.push(`/${params.storeId}/customers`);
-      toast.success("Category deleted.");
+      router.push(`/${params.storeId}/customer`);
+      toast.success("Customer deleted.");
     } catch (error: any) {
       toast.error(
-        "Make sure you removed all products using this category first."
+        "Make sure you removed all products using this Customer first."
       );
     } finally {
       setLoading(false);
