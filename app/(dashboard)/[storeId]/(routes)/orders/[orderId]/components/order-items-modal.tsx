@@ -33,7 +33,7 @@ const formSchema = z.object({
   productId: z.string().min(1),
   price: z.string().min(1),
   totalPrice: z.number(),
-  quantity: z.string(),
+  quantity: z.number(),
 });
 
 interface StoreModalProps {
@@ -184,15 +184,16 @@ export const StoreModal: React.FC<StoreModalProps> = ({
                         <FormLabel>Quantity</FormLabel>
                         <FormControl>
                           <Input
+                            type="number"
                             disabled={loading}
                             placeholder="Quantity"
                             {...field}
                             onChange={(e) => {
-                              field.onChange(e);
-                              const quantity = parseInt(e.target.value, 10);
-                              const price = parseFloat(form.getValues("price"));
-                              if (!isNaN(quantity) && !isNaN(price)) {
-                                form.setValue("totalPrice", quantity * price);
+                              const value = e.target.valueAsNumber;
+                              field.onChange(value);
+                              const price = form.getValues("price");
+                              if (!isNaN(value) && !isNaN(price)) {
+                                form.setValue("totalPrice", value * price);
                               }
                             }}
                           />
