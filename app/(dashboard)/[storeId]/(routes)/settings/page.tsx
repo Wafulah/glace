@@ -24,9 +24,9 @@ const SettingsPage = async ({ params }: { params: { storeId: string } }) => {
     redirect("/");
   }
 
-  const categories = await getCategories(params.storeId, user.session_token);
+  const categories = await getCategories(params.storeId, user.jwt_token);
 
-  const counties = await getCounties(params.storeId, user.session_token);
+  const counties = await getCounties(params.storeId,user.jwt_token);
 
   return (
     <div className="flex-col">
