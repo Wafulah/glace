@@ -9,7 +9,7 @@ import { toast } from "react-hot-toast";
 import { useState } from "react";
 import type { Product, OrderItem } from "@/types";
 
-import Modal from "@/components/ui/modal";
+import { Modal } from "@/components/ui/modal";
 import { Input } from "@/components/ui/input";
 import {
   Form,
@@ -104,7 +104,12 @@ export const StoreModal: React.FC<StoreModalProps> = ({
 
   return (
     isModalOpen && (
-      <Modal open={isModalOpen} onClose={closeModal}>
+      <Modal
+        title="Add Products"
+        description="Select Products and Quantity to add to your order."
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      >
         <div>
           <div className="space-y-4 py-2 pb-4">
             <div className="space-y-2">

@@ -379,7 +379,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
                 </FormItem>
               )}
             />
-            <Button variant="outline" onClick={() => setIsModalOpen(true)}>
+            <Button onClick={() => setIsModalOpen(true)}>
               Select Products
             </Button>
             {isModalOpen && (
