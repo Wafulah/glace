@@ -110,7 +110,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
 
   const handleDone = (items: OrderItem[]) => {
     setOrderItems(items);
-    console.log(orderItems);
+    console.log("page",orderItems);
     setIsModalOpen(false);
   };
   const closeModal = () => {
