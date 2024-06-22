@@ -20,8 +20,8 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
     id: item.id,
     phone: item.phone,
     address: item.address,
-    customer: `${item.customer.firstName || ""}, ${
-      item.customer.lastName || ""
+    customer: `${item.customer.first_name || ""}, ${
+      item.customer.last_name || ""
     }`,
     products: item.orderItems
       .map((orderItem) => orderItem.product.name)
