@@ -1,3 +1,4 @@
+import { parseISO } from "date-fns";
 import { County } from "@/types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_ALL_URL;
@@ -26,7 +27,12 @@ export const getCounties = async (
     }
 
     const counties: County[] = await response.json();
-    return counties;
+
+    return counties.map((item: any) => ({
+      ...item,
+      created_at: parseISO(item.created_at),
+      updated_at: parseISO(item.updated_at),
+    }));
   } catch (error) {
     console.error("[GET_COUNTIES_ERROR]", error);
     throw error;
