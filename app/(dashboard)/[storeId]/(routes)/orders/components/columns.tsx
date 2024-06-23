@@ -9,8 +9,8 @@ export type OrderColumn = {
   phone: string;
   address: string;
   customer: string;
-  isPaid: boolean;
-  isDelivered: boolean;
+  is_paid: boolean;
+  is_delivered: boolean;
   totalPrice: string;
   products: string;
   created_at: string;
@@ -34,7 +34,7 @@ export const columns: ColumnDef<OrderColumn>[] = [
     header: "Total price",
   },
   {
-    accessorKey: "isDelivered",
+    accessorKey: "is_delivered",
     header: "Delivered",
   },
   {

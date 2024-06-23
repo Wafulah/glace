@@ -61,11 +61,11 @@ const OrderItemSchema = z.object({
 
 const formSchema = z.object({
   customerId: z.string().min(1),
-  isPaid: z.boolean(),
-  isDelivered: z.boolean(),
+  is_paid: z.boolean(),
+  is_delivered: z.boolean(),
   phone: z.string(),
   address: z.string(),
-  deliveryDate: z.date(),
+  delivery_date: z.date(),
   orderItems: z.array(OrderItemSchema),
 });
 
@@ -113,7 +113,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     resolver: zodResolver(formSchema),
     defaultValues: {
       ...initialData,
-      orderItems: initialData.orderItems.map((item) => ({
+      orderItems: initialData.order_items.map((item) => ({
         product: item.product.id,
         quantity: item.quantity,
         price: item.price,
@@ -126,8 +126,8 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     form.setValue(
       "orderItems",
       orderItems
-        .filter(item => item.product.id !== "")
-        .map(item => ({
+        .filter((item) => item.product.id !== "")
+        .map((item) => ({
           product: item.product.id,
           quantity: item.quantity,
           price: item.price,
@@ -139,7 +139,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     try {
       setLoading(true);
       const data = values;
-      
+
       if (initialData.id === "" || !initialData) {
         await axios.post(
           `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/`,
@@ -291,7 +291,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
             />{" "}
             <FormField
               control={form.control}
-              name="isDelivered"
+              name="is_delivered"
               render={({ field }) => (
                 <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
                   <FormControl>
@@ -312,7 +312,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="isPaid"
+              name="is_paid"
               render={({ field }) => (
                 <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
                   <FormControl>
@@ -333,7 +333,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="deliveryDate"
+              name="delivery_date"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>Date the Client will receive the order.</FormLabel>
@@ -398,7 +398,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
       {isModalOpen && (
         <StoreModal
           products={products}
-          initialData={initialData.orderItems}
+          initialData={initialData.order_items}
           onDone={handleDone}
         />
       )}

@@ -52,14 +52,14 @@ export interface Order {
   id: string;
   store: Store; // Store reference
   customer: Customer; // Customer reference
-  isPaid: boolean;
-  isDelivered: boolean;
+  is_paid: boolean;
+  is_delivered: boolean;
   phone: string;
   address: string;
   created_at: Date; // ISO string format date
   updated_at: Date; // ISO string format date
-  deliveryDate: Date; // ISO string format date
-  orderItems: OrderItem[];
+  delivery_date: Date; // ISO string format date
+  order_items: OrderItem[];
 }
 
 export interface OrderItem {
@@ -206,14 +206,14 @@ export const defaultOrder: Order = {
   id: "",
   store: defaultStore,
   customer: defaultCustomer,
-  isPaid: false,
-  isDelivered: false,
+  is_paid: false,
+  is_delivered: false,
   phone: "",
   address: "",
   created_at: new Date(),
   updated_at: new Date(),
-  deliveryDate: new Date(),
-  orderItems: [defaultOrderItem],
+  delivery_date: new Date(),
+  order_items: [defaultOrderItem],
 };
 
 // Default UserProfile

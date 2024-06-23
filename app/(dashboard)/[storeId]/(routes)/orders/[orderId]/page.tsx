@@ -24,11 +24,12 @@ const ProductPage = async ({
   params: { orderId: string; storeId: string };
 }) => {
   const user = await currentUser();
-  const order = await getOrder(
-    params.storeId,
-    user?.jwt_token as string,
-    params.orderId
-  ) || defaultOrder;
+  const order =
+    (await getOrder(
+      params.storeId,
+      user?.jwt_token as string,
+      params.orderId
+    )) || defaultOrder;
   const products = await getProducts(params.storeId, user?.jwt_token as string);
   const customers = await getCustomers(
     params.storeId,
@@ -39,14 +40,14 @@ const ProductPage = async ({
     id: order?.id ?? "N/A",
     phone: order?.phone ?? "N/A",
     address: order?.address ?? "N/A",
-    isPaid: order?.isPaid ?? false,
-    isDelivered: order?.isDelivered ?? false,
-    deliveryDate: order?.deliveryDate,
+    is_paid: order?.is_paid ?? false,
+    is_delivered: order?.is_delivered ?? false,
+    delivery_date: order?.delivery_date,
     created_at: order
       ? format(new Date(order.created_at), "MMMM do, yyyy")
       : "N/A",
     products: order
-      ? order.orderItems.map((orderItem) => ({
+      ? order.order_items.map((orderItem) => ({
           name: orderItem.product.name,
           quantity: orderItem.quantity.toString(),
           price: formatter.format(Number(orderItem.product.price)),
@@ -64,7 +65,7 @@ const ProductPage = async ({
           initialData={order}
           jwt_token={user?.jwt_token}
         />
-        <OrderProductModal products={products} initialData={order.orderItems} />
+        <OrderProductModal products={products} initialData={order.order_items} />
       </div>
     </div>
   );

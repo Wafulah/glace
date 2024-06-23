@@ -6,9 +6,9 @@ export type OrderCol = {
   id: string;
   phone: string;
   address: string;
-  isPaid: boolean;
-  isDelivered: boolean;
-  deliveryDate: Date;
+  is_paid: boolean;
+  is_delivered: boolean;
+  delivery_date: Date;
   created_at: string;
   products: {
     name: string;
@@ -28,8 +28,8 @@ export type Col = {
 export type AddressCol = {
   phone: string;
   address: string;
-  isPaid: boolean;
-  isDelivered: boolean;
+  is_paid: boolean;
+  is_delivered: boolean;
   created_at: string;
 };
 
@@ -62,11 +62,11 @@ export const Addresscolumns: ColumnDef<AddressCol>[] = [
     header: "Address",
   },
   {
-    accessorKey: "isPaid",
+    accessorKey: "is_paid",
     header: "Paid",
   },
   {
-    accessorKey: "isDelivered",
+    accessorKey: "is_delivered",
     header: "Delivered",
   },
   {
