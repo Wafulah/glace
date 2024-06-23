@@ -56,7 +56,6 @@ export interface Order {
   isDelivered: boolean;
   phone: string;
   address: string;
-  county: County; // County reference
   created_at: Date; // ISO string format date
   updated_at: Date; // ISO string format date
   deliveryDate: Date; // ISO string format date

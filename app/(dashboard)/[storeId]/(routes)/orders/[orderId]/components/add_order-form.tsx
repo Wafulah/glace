@@ -102,7 +102,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
 
   const handleDone = (items: OrderItem[]) => {
     setOrderItems([...items]);
-    
+
     setIsModalOpen(false);
   };
   const closeModal = () => {
@@ -137,7 +137,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     try {
       setLoading(true);
       const data = values;
-      
+
       if (initialData.id === "" || !initialData) {
         await axios.post(
           `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/`,
@@ -149,7 +149,6 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
           }
         );
       } else {
-        
         await axios.patch(
           `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/${params.orderId}/`,
           data,
@@ -379,14 +378,14 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
               )}
             />
             <Button
-  className="bg-green-500 rounded-lg"
-  onClick={(e) => {
-    e.preventDefault(); // Prevent form submission
-    onProducts(); // Execute your function to add products
-  }}
->
-  Add Products
-</Button>
+              className="bg-green-500 rounded-lg"
+              onClick={(e) => {
+                e.preventDefault();
+                onProducts();
+              }}
+            >
+              Add Products
+            </Button>
           </div>
 
           <Button disabled={loading} className="ml-auto" type="submit">
