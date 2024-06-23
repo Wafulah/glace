@@ -1,4 +1,18 @@
-import { Order } from "@/types";
+import { OrderItem, Store, Customer } from "@/types";
+
+export interface Order {
+  id: string;
+  store: Store; // Store reference
+  customer: Customer; // Customer reference
+  isPaid: boolean;
+  isDelivered: boolean;
+  phone: string;
+  address: string;
+  created_at: Date; // ISO string format date
+  updated_at: Date; // ISO string format date
+  deliveryDate: Date; // ISO string format date
+  order_items: OrderItem[];
+}
 
 const API_URL = process.env.NEXT_PUBLIC_API_ALL_URL;
 
