@@ -23,13 +23,10 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
     customer: `${item.customer.first_name || ""}, ${
       item.customer.last_name || ""
     }`,
-    products: item.orderItems
+    products: item.order_items
       .map((orderItem) => orderItem.product.name)
       .join(", "),
-    totalPrice: formatter.format(
-      item.orderItems.reduce((total, item) => {
-        return total + Number(item.product.price);
-      }, 0)
+    totalPrice: formatter.format(orderItem.price)
     ),
     isPaid: item.isPaid,
     isDelivered: item.isDelivered,
