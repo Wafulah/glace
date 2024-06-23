@@ -125,11 +125,13 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
   React.useEffect(() => {
     form.setValue(
       "orderItems",
-      orderItems.map((item) => ({
-        product: item.product.id,
-        quantity: item.quantity,
-        price: item.price,
-      }))
+      orderItems
+        .filter(item => item.product.id !== "")
+        .map(item => ({
+          product: item.product.id,
+          quantity: item.quantity,
+          price: item.price,
+        }))
     );
   }, [orderItems, form]);
 
