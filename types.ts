@@ -210,7 +210,6 @@ export const defaultOrder: Order = {
   isDelivered: false,
   phone: "",
   address: "",
-  county: defaultCounty,
   created_at: new Date(),
   updated_at: new Date(),
   deliveryDate: new Date(),

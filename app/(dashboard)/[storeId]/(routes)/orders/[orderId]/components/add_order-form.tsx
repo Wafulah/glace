@@ -137,7 +137,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
     try {
       setLoading(true);
       const data = values;
-
+      console.log(data);
       if (initialData.id === "" || !initialData) {
         await axios.post(
           `${process.env.NEXT_PUBLIC_API_ALL_URL}/${params.storeId}/orders/`,
