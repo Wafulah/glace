@@ -8,7 +8,7 @@ export const getProducts = async (
   isArchived?: boolean
 ): Promise<Product[]> => {
   if (!store_id || !jwt_token) {
-    throw new Error("Store ID and user jwt token are required");
+    throw new Error("Store ID and user JWT token are required");
   }
 
   let url = `${API_URL}/${store_id}/products/`;

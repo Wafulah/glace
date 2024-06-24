@@ -1,4 +1,5 @@
 import { getOrders } from "@/actions/get-orders";
+import { Order } from "@/types";
 
 interface GraphData {
   name: string;
@@ -9,20 +10,20 @@ export const getGraphRevenue = async (
   storeId: string,
   jwt_token: string
 ): Promise<GraphData[]> => {
-  //is paid==true
+  // Fetch paid orders
   const paidOrders = await getOrders(storeId, jwt_token, true);
-  console.log("revenue",paidOrders)
+
   const monthlyRevenue: { [key: number]: number } = {};
 
   // Grouping the orders by month and summing the revenue
   for (const order of paidOrders) {
     const createdAt = new Date(order.created_at);
     const month = createdAt.getMonth(); // 0 for Jan, 1 for Feb, ...
-    console.log("month",month)
+
     let revenueForOrder = 0;
 
     for (const item of order.order_items) {
-      revenueForOrder += Number(item.product.price);
+      revenueForOrder += Number(item.product.price) * item.quantity;
     }
 
     // Adding the revenue for this order to the respective month
