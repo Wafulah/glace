@@ -11,13 +11,14 @@ export const getGraphRevenue = async (
 ): Promise<GraphData[]> => {
   //is paid==true
   const paidOrders = await getOrders(storeId, jwt_token, true);
-
+  console.log("revenue",paidOrders)
   const monthlyRevenue: { [key: number]: number } = {};
 
   // Grouping the orders by month and summing the revenue
   for (const order of paidOrders) {
     const createdAt = new Date(order.created_at);
     const month = createdAt.getMonth(); // 0 for Jan, 1 for Feb, ...
+    console.log("month",month)
     let revenueForOrder = 0;
 
     for (const item of order.order_items) {
