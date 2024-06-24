@@ -162,6 +162,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
         );
       }
       router.refresh();
+      router.push(`/${params.storeId}/orders`);
       toast.success("Order updated.");
     } catch (error: any) {
       toast.error("Something went wrong.");
