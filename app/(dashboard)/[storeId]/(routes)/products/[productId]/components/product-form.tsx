@@ -82,6 +82,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         quantity: parseInt(String(initialData?.quantity)),
         rating: parseInt(String(initialData?.rating)),
         description: initialData.description ?? "",
+        isArchived: initialData.is_archived,
       }
     : {
         name: "",
