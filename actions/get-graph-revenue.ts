@@ -16,7 +16,8 @@ export const getGraphRevenue = async (
 
   // Grouping the orders by month and summing the revenue
   for (const order of paidOrders) {
-    const month = order.created_at.getMonth(); // 0 for Jan, 1 for Feb, ...
+    const createdAt = new Date(order.created_at);
+    const month = createdAt.getMonth(); // 0 for Jan, 1 for Feb, ...
     let revenueForOrder = 0;
 
     for (const item of order.order_items) {
