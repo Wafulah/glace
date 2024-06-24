@@ -25,12 +25,13 @@ export const getProducts = async (
         "Content-Type": "application/json",
       },
     });
-
+    console.log("Fetching URL:", url);
     if (!response.ok) {
       throw new Error(`Error fetching products: ${response.statusText}`);
     }
 
     const products: Product[] = await response.json();
+    console.log("Fetched products:", products);
     return products;
   } catch (error) {
     console.error("[GET_PRODUCTS_ERROR]", error);
