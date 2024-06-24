@@ -7,7 +7,7 @@ export interface Product {
   quantity: number; // Changed to number for consistency
   rating: number; // Added based on the Product model
   description: string;
-  isArchived: boolean; // Boolean to indicate if archived
+  is_archived: boolean; // Boolean to indicate if archived
   created_at: Date; // ISO string format date
   updated_at: Date; // ISO string format date
   images: Image[];
@@ -148,7 +148,7 @@ export const defaultProduct: Product = {
   quantity: 0,
   rating: 0,
   description: "",
-  isArchived: false,
+  is_archived: false,
   created_at: new Date(),
   updated_at: new Date(),
   images: [defaultImage],
