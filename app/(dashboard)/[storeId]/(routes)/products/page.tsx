@@ -24,7 +24,7 @@ const ProductsPage = async ({ params }: { params: { storeId: string } }) => {
     name: item.name,
     quantity: item.quantity,
     rating: item.rating,
-    isArchived: item.isArchived,
+    isArchived: item.is_archived,
     price: item.price,
     category: item.category.name,
     created_at: format(item.created_at, "MMMM do, yyyy"),
