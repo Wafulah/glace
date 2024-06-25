@@ -19,12 +19,10 @@ export const ApiList: React.FC<ApiListProps> = ({
     entityIdName,
 }) => {
     const params = useParams();
-    const origin = useOrigin();
+    const origin = 'https://glace-api-vhkd.onrender.com';
     const user = useCurrentUser();
 
-    if (!user || user.role !== UserRole.ADMIN) {
-        return null;
-    }
+    
     const baseUrl = `${origin}/api/${params.storeId}`;
 
     return (
