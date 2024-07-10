@@ -75,12 +75,7 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      productId: "",
-      price: "",
-      totalPrice: 0,
-      quantity: 0,
-    },
+   
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
