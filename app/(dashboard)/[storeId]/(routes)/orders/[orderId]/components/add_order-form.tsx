@@ -403,12 +403,7 @@ export const AddOrderForm: React.FC<AddOrderFormProps> = ({
           onDone={handleDone}
         />
       )}
-      <Separator />
-      <ApiAlert
-        title="NEXT_PUBLIC_API_URL"
-        variant="public"
-        description={`${origin}/api/${params.storeId}`}
-      />
+      
     </>
   );
 };

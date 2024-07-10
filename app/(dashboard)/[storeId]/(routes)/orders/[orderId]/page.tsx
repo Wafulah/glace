@@ -13,6 +13,8 @@ import { getOrder } from "@/actions/get-order";
 import { getProducts } from "@/actions/get-products";
 import { getCustomers } from "@/actions/get-customers";
 import { defaultOrder } from "@/types";
+import { Separator } from "@/components/ui/separator";
+import { ApiAlert } from "@/components/ui/api-alert";
 
 export const metadata: Metadata = {
   title: "Order",
@@ -67,6 +69,12 @@ const ProductPage = async ({
           jwt_token={user?.jwt_token}
         />
         <OrderProductModal products={products} initialData={order.order_items} />
+      <Separator />
+      <ApiAlert
+        title="NEXT_PUBLIC_API_URL"
+        variant="public"
+        description={`${origin}/api/${params.storeId}/${order.id}`}
+      />
       </div>
     </div>
   );
