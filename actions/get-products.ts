@@ -25,7 +25,7 @@ export const getProducts = async (
         "Content-Type": "application/json",
       },
     });
-    console.log("Fetching URL:", url);
+   
     if (!response.ok) {
       throw new Error(`Error fetching products: ${response.statusText}`);
     }

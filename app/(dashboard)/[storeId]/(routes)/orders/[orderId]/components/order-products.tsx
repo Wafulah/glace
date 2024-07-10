@@ -171,7 +171,7 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
                               disabled={true}
                               placeholder="Product Price"
                               {...field}
-                              defaultValue={OrderedItem.product.price.toString()} 
+                              defaultValue={OrderedItem.product.price}
                             />
                           </FormControl>
                           <FormMessage />
