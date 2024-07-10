@@ -63,7 +63,7 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
+    defaultValues: initialData || {
       productId: "",
       price: "",
       totalPrice: 0,
