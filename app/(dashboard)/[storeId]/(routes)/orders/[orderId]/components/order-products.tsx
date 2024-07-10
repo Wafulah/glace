@@ -56,7 +56,8 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [loading, setLoading] = useState(false);
   const [orderItems, setOrderItems] = useState<OrderItem[]>(initialData || []);
-
+  console.log("OrderItems",orderItems);
+  console.log("initialData",initialData);
   const closeModal = () => {
     setIsModalOpen(false);
   };
