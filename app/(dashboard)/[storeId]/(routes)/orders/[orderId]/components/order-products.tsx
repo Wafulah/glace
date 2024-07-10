@@ -133,7 +133,7 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
                               if (selectedProduct) {
                                 form.setValue(
                                   "price",
-                                  OrderedItem.product.price
+                                  selectedProduct.price.toString()
                                 );
                               }
                             }}
@@ -171,7 +171,7 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
                               disabled={true}
                               placeholder="Product Price"
                               {...field}
-                              defaultValue={OrderedItem.product.price}
+                              defaultValue={OrderedItem.product.price.toString()} 
                             />
                           </FormControl>
                           <FormMessage />
