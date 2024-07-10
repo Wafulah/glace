@@ -75,7 +75,6 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-   
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -98,7 +97,6 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
         ]);
       }
 
-      
       toast.success("Product added successfully");
     } catch (error) {
       console.error("Error:", error);
