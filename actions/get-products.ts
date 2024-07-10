@@ -31,7 +31,7 @@ export const getProducts = async (
     }
 
     const products: Product[] = await response.json();
-    console.log("Fetched products:", products);
+    
     return products;
   } catch (error) {
     console.error("[GET_PRODUCTS_ERROR]", error);
