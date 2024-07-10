@@ -56,15 +56,26 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [loading, setLoading] = useState(false);
   const [orderItems, setOrderItems] = useState<OrderItem[]>(initialData || []);
-  console.log("OrderItems",orderItems);
-  console.log("initialData",initialData);
+
+  let data;
+  if (orderItems && Array.isArray(initialData)) {
+    data = initialData.map((item) => ({
+      productId: item.product.id,
+      price: item.product.price,
+      totalPrice: item.price,
+      quantity: item.quantity,
+    }));
+  } else {
+    data = null;
+  }
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData || {
+    defaultValues: {
       productId: "",
       price: "",
       totalPrice: 0,
@@ -92,7 +103,7 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
         ]);
       }
 
-      form.reset();
+      
       toast.success("Product added successfully");
     } catch (error) {
       console.error("Error:", error);
@@ -139,7 +150,7 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
                             <FormControl>
                               <SelectTrigger>
                                 <SelectValue
-                                  defaultValue={field.value}
+                                  defaultValue={OrderedItem.product.name}
                                   placeholder="Select a Product"
                                 />
                               </SelectTrigger>
