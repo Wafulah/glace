@@ -133,7 +133,7 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
                               if (selectedProduct) {
                                 form.setValue(
                                   "price",
-                                  selectedProduct.price.toString()
+                                  OrderedItem.product.price
                                 );
                               }
                             }}
