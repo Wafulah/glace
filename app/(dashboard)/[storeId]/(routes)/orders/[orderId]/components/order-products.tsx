@@ -105,7 +105,7 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
       setLoading(false);
     }
   };
- console.log(orderItems);
+
   return (
     orderItems &&
     orderItems.map((OrderedItem) => (
@@ -143,7 +143,13 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
                             <FormControl>
                               <SelectTrigger>
                                 <SelectValue
-                                  defaultValue={OrderedItem.product.name}
+                                  defaultValue={
+                                    products.find(
+                                      (product) =>
+                                        product.id ===
+                                        OrderedItem.product.toString()
+                                    )?.name || ""
+                                  }
                                   placeholder="Select a Product"
                                 />
                               </SelectTrigger>
@@ -171,7 +177,9 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
                               disabled={true}
                               placeholder="Product Price"
                               {...field}
-                              defaultValue={OrderedItem.product.price}
+                              defaultValue={(
+                                OrderedItem.price / OrderedItem.quantity
+                              ).toString()}
                             />
                           </FormControl>
                           <FormMessage />
