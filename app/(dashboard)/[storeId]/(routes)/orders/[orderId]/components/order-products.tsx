@@ -105,7 +105,7 @@ export const OrderProductModal: React.FC<StoreModalProps> = ({
       setLoading(false);
     }
   };
- console.log(OrderItems);
+ console.log(orderItems);
   return (
     orderItems &&
     orderItems.map((OrderedItem) => (
