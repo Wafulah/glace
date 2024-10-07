@@ -42,7 +42,7 @@ export const CardWrapper = ({
         {backButtonLabel && (<BackButton
           label={backButtonLabel}
           href={backButtonHref}
-        />)
+        />)}
       </CardFooter>
     </Card>
   );
